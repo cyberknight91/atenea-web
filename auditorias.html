@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditorías - Atenea Ciberseguridad</title>
+
+<link rel="icon" type="image/png" href="assets/favicon.ico">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+:root{
+--granate:#7a0019;
+}
+
+/* glow tarjetas */
+
+.card-glow:hover{
+box-shadow:0 0 25px rgba(122,0,25,0.7);
+}
+
+/* animación flotante */
+
+@keyframes float{
+0%{transform:translateY(0px)}
+50%{transform:translateY(-6px)}
+100%{transform:translateY(0px)}
+}
+
+.float{
+animation:float 4s ease-in-out infinite;
+}
+
+/* acordeón */
+
+.accordion{
+max-height:0;
+overflow:hidden;
+transition:max-height .4s ease;
+}
+
+</style>
+
+</head>
+
+<body class="bg-gray-900 text-white">
+
+<!-- NAVBAR -->
+
+<nav class="bg-black border-b border-gray-700">
+
+<div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+
+<h1 class="font-bold text-lg">Atenea Ciberseguridad</h1>
+
+<div class="space-x-6">
+
+<a href="index.html" class="hover:text-gray-300">Inicio</a>
+<a href="auditorias.html" class="text-[var(--granate)] font-semibold">Auditorías</a>
+<a href="quienesomos.html" class="hover:text-gray-300">Quiénes somos</a>
+<a href="contacto.html" class="hover:text-gray-300">Contacto</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="relative py-28 overflow-hidden">
+
+<div class="max-w-6xl mx-auto relative px-6 text-center">
+
+<!-- LOGO DECORATIVO -->
+
+<img 
+src="assets/logo.png"
+class="hidden md:block absolute left-[-220px] top-1/2 -translate-y-1/2 h-[420px] opacity-100 pointer-events-none"
+/>
+
+<!-- GRADIENT -->
+
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,#7a0019,transparent_70%)]"></div>
+
+<h1 class="text-5xl font-bold mb-6 float">
+Auditorías de <span class="text-[var(--granate)]">Ciberseguridad</span>
+</h1>
+
+<p class="text-gray-400 max-w-3xl mx-auto text-lg">
+Protegemos infraestructuras digitales mediante auditorías avanzadas,
+pentesting profesional y análisis asistido por inteligencia artificial.
+</p>
+
+<div class="mt-10">
+
+<a href="contacto.html"
+class="bg-[var(--granate)] px-8 py-3 rounded-lg font-semibold
+hover:shadow-lg hover:shadow-[var(--granate)]/50
+hover:scale-105 transition duration-300">
+
+Solicitar Auditoría
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICIOS -->
+
+<section class="py-20">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold text-center mb-16">
+Servicios de Auditoría
+</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+<!-- CARD -->
+
+<div onclick="toggleAccordion('p1')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
+
+<div class="text-[var(--granate)] text-3xl mb-4">🛡️</div>
+
+<h3 class="text-xl font-semibold mb-3">
+Pentesting de Infraestructura
+</h3>
+
+<p class="text-gray-400">
+Evaluación de redes internas y externas para detectar vulnerabilidades.
+</p>
+
+<div id="p1" class="accordion text-gray-400 mt-4">
+
+<ul class="list-disc ml-5 space-y-1">
+
+<li>Escaneo de puertos y servicios</li>
+<li>Enumeración de sistemas</li>
+<li>Explotación controlada</li>
+<li>Escalada de privilegios</li>
+<li>Informe técnico detallado</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div onclick="toggleAccordion('p2')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
+
+<div class="text-[var(--granate)] text-3xl mb-4">🌐</div>
+
+<h3 class="text-xl font-semibold mb-3">
+Auditoría Web
+</h3>
+
+<p class="text-gray-400">
+Detección de vulnerabilidades OWASP.
+</p>
+
+<div id="p2" class="accordion text-gray-400 mt-4">
+
+<ul class="list-disc ml-5 space-y-1">
+
+<li>SQL Injection</li>
+<li>Cross-Site Scripting (XSS)</li>
+<li>Control de acceso incorrecto</li>
+<li>Fallos de autenticación</li>
+<li>Configuraciones inseguras</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div onclick="toggleAccordion('p3')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
+
+<div class="text-[var(--granate)] text-3xl mb-4">🔍</div>
+
+<h3 class="text-xl font-semibold mb-3">
+Análisis de Vulnerabilidades
+</h3>
+
+<p class="text-gray-400">
+Identificación y priorización de vulnerabilidades.
+</p>
+
+<div id="p3" class="accordion text-gray-400 mt-4">
+
+<ul class="list-disc ml-5 space-y-1">
+
+<li>Escaneo automatizado</li>
+<li>Validación manual</li>
+<li>Clasificación CVSS</li>
+<li>Priorización de riesgos</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div onclick="toggleAccordion('p4')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
+
+<div class="text-[var(--granate)] text-3xl mb-4">⚙️</div>
+
+<h3 class="text-xl font-semibold mb-3">
+Auditoría de Configuración
+</h3>
+
+<p class="text-gray-400">
+Revisión de configuraciones de seguridad.
+</p>
+
+<div id="p4" class="accordion text-gray-400 mt-4">
+
+<ul class="list-disc ml-5 space-y-1">
+
+<li>Hardening de sistemas</li>
+<li>Revisión de Active Directory</li>
+<li>Configuración de servidores</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div onclick="toggleAccordion('p5')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
+
+<div class="text-[var(--granate)] text-3xl mb-4">📡</div>
+
+<h3 class="text-xl font-semibold mb-3">
+Seguridad de Red
+</h3>
+
+<p class="text-gray-400">
+Evaluación de arquitectura de red.
+</p>
+
+<div id="p5" class="accordion text-gray-400 mt-4">
+
+<ul class="list-disc ml-5 space-y-1">
+
+<li>Segmentación de red</li>
+<li>Análisis de firewall</li>
+<li>Evaluación de VPN</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div onclick="toggleAccordion('p6')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
+
+<div class="text-[var(--granate)] text-3xl mb-4">🤖</div>
+
+<h3 class="text-xl font-semibold mb-3">
+Análisis con IA
+</h3>
+
+<p class="text-gray-400">
+Detección avanzada de amenazas.
+</p>
+
+<div id="p6" class="accordion text-gray-400 mt-4">
+
+<ul class="list-disc ml-5 space-y-1">
+
+<li>Análisis de patrones de ataque</li>
+<li>Correlación de eventos</li>
+<li>Detección de anomalías</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+function toggleAccordion(id){
+
+const el=document.getElementById(id)
+
+if(el.style.maxHeight){
+el.style.maxHeight=null
+}else{
+el.style.maxHeight=el.scrollHeight+"px"
+}
+
+}
+
+</script>
+
+</body>
+</html>
