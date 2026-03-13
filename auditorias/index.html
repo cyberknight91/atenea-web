@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auditorías - Atenea Ciberseguridad</title>
+<title>Servicios - Atenea Ciberseguridad</title>
 
 <link rel="icon" type="image/png" href="/assets/favicon.ico">
 
@@ -17,13 +17,9 @@
 --granate:#7a0019;
 }
 
-/* glow tarjetas */
-
 .card-glow:hover{
 box-shadow:0 0 25px rgba(122,0,25,0.7);
 }
-
-/* animación flotante */
 
 @keyframes float{
 0%{transform:translateY(0px)}
@@ -34,8 +30,6 @@ box-shadow:0 0 25px rgba(122,0,25,0.7);
 .float{
 animation:float 4s ease-in-out infinite;
 }
-
-/* acordeón */
 
 .accordion{
 max-height:0;
@@ -60,7 +54,7 @@ transition:max-height .4s ease;
 <div class="space-x-6">
 
 <a href="/" class="hover:text-white">Inicio</a>
-<a href="/auditorias/" class="hover:text-white">Auditorías</a>
+<a href="/auditorias/" class="hover:text-white">Servicios</a>
 <a href="/quienes-somos/" class="hover:text-white">Quiénes somos</a>
 <a href="/contacto/" class="hover:text-white">Contacto</a>
 
@@ -76,19 +70,15 @@ transition:max-height .4s ease;
 
 <div class="max-w-6xl mx-auto relative px-6 text-center">
 
-
-
-<!-- GRADIENT -->
-
 <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,#7a0019,transparent_70%)]"></div>
 
 <h1 class="text-5xl font-bold mb-6 float">
-Auditorías de <span class="text-[var(--granate)]">Ciberseguridad</span>
+Servicios de <span class="text-[var(--granate)]">Ciberseguridad</span>
 </h1>
 
 <p class="text-gray-400 max-w-3xl mx-auto text-lg">
-Protegemos infraestructuras digitales mediante auditorías avanzadas,
-pentesting profesional y análisis asistido por inteligencia artificial.
+Protegemos infraestructuras digitales mediante auditorías de seguridad,
+análisis de vulnerabilidades y soluciones de protección de datos para empresas.
 </p>
 
 <div class="mt-10">
@@ -98,7 +88,7 @@ class="bg-[var(--granate)] px-8 py-3 rounded-lg font-semibold
 hover:shadow-lg hover:shadow-[var(--granate)]/50
 hover:scale-105 transition duration-300">
 
-Solicitar Auditoría
+Solicitar Información
 
 </a>
 
@@ -115,12 +105,12 @@ Solicitar Auditoría
 <div class="max-w-6xl mx-auto px-6">
 
 <h2 class="text-4xl font-bold text-center mb-16">
-Servicios de Auditoría
+Servicios
 </h2>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-<!-- CARD -->
+<!-- Pentesting -->
 
 <div onclick="toggleAccordion('p1')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
 
@@ -137,20 +127,17 @@ Evaluación de redes internas y externas para detectar vulnerabilidades.
 <div id="p1" class="accordion text-gray-400 mt-4">
 
 <ul class="list-disc ml-5 space-y-1">
-
 <li>Escaneo de puertos y servicios</li>
 <li>Enumeración de sistemas</li>
 <li>Explotación controlada</li>
 <li>Escalada de privilegios</li>
 <li>Informe técnico detallado</li>
-
 </ul>
 
 </div>
-
 </div>
 
-<!-- CARD -->
+<!-- Auditoría Web -->
 
 <div onclick="toggleAccordion('p2')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
 
@@ -167,20 +154,17 @@ Detección de vulnerabilidades OWASP.
 <div id="p2" class="accordion text-gray-400 mt-4">
 
 <ul class="list-disc ml-5 space-y-1">
-
 <li>SQL Injection</li>
 <li>Cross-Site Scripting (XSS)</li>
 <li>Control de acceso incorrecto</li>
 <li>Fallos de autenticación</li>
 <li>Configuraciones inseguras</li>
-
 </ul>
 
 </div>
-
 </div>
 
-<!-- CARD -->
+<!-- Vulnerabilidades -->
 
 <div onclick="toggleAccordion('p3')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
 
@@ -197,19 +181,16 @@ Identificación y priorización de vulnerabilidades.
 <div id="p3" class="accordion text-gray-400 mt-4">
 
 <ul class="list-disc ml-5 space-y-1">
-
 <li>Escaneo automatizado</li>
 <li>Validación manual</li>
 <li>Clasificación CVSS</li>
 <li>Priorización de riesgos</li>
-
 </ul>
 
 </div>
-
 </div>
 
-<!-- CARD -->
+<!-- Configuración -->
 
 <div onclick="toggleAccordion('p4')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
 
@@ -226,18 +207,15 @@ Revisión de configuraciones de seguridad.
 <div id="p4" class="accordion text-gray-400 mt-4">
 
 <ul class="list-disc ml-5 space-y-1">
-
 <li>Hardening de sistemas</li>
 <li>Revisión de Active Directory</li>
 <li>Configuración de servidores</li>
-
 </ul>
 
 </div>
-
 </div>
 
-<!-- CARD -->
+<!-- Seguridad de red -->
 
 <div onclick="toggleAccordion('p5')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
 
@@ -254,18 +232,15 @@ Evaluación de arquitectura de red.
 <div id="p5" class="accordion text-gray-400 mt-4">
 
 <ul class="list-disc ml-5 space-y-1">
-
 <li>Segmentación de red</li>
 <li>Análisis de firewall</li>
 <li>Evaluación de VPN</li>
-
 </ul>
 
 </div>
-
 </div>
 
-<!-- CARD -->
+<!-- IA -->
 
 <div onclick="toggleAccordion('p6')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
 
@@ -282,15 +257,91 @@ Detección avanzada de amenazas.
 <div id="p6" class="accordion text-gray-400 mt-4">
 
 <ul class="list-disc ml-5 space-y-1">
-
 <li>Análisis de patrones de ataque</li>
 <li>Correlación de eventos</li>
 <li>Detección de anomalías</li>
+</ul>
+
+</div>
+</div>
+
+<!-- Backup nube -->
+
+<div onclick="toggleAccordion('p7')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
+
+<div class="text-[var(--granate)] text-3xl mb-4">☁️</div>
+
+<h3 class="text-xl font-semibold mb-3">
+Copias de Seguridad en la Nube
+</h3>
+
+<p class="text-gray-400">
+Protección automática de datos críticos mediante sistemas de respaldo seguro.
+</p>
+
+<div id="p7" class="accordion text-gray-400 mt-4">
+
+<ul class="list-disc ml-5 space-y-1">
+<li>Backups automáticos</li>
+<li>Recuperación ante ransomware</li>
+<li>Protección de servidores y PCs</li>
+<li>Versionado de archivos</li>
+</ul>
+
+</div>
+</div>
+<!-- Monitorización -->
+
+<div onclick="toggleAccordion('p9')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
+
+<div class="text-[var(--granate)] text-3xl mb-4">🛰️</div>
+
+<h3 class="text-xl font-semibold mb-3">
+Monitorización de Seguridad
+</h3>
+
+<p class="text-gray-400">
+Supervisión continua de sistemas para detectar ataques y comportamientos anómalos.
+</p>
+
+<div id="p9" class="accordion text-gray-400 mt-4">
+
+<ul class="list-disc ml-5 space-y-1">
+
+<li>Monitorización de logs</li>
+<li>Detección de intrusiones</li>
+<li>Alertas de seguridad</li>
+<li>Análisis de actividad sospechosa</li>
 
 </ul>
 
 </div>
 
+</div>
+<!-- Asesoramiento -->
+
+<div onclick="toggleAccordion('p8')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
+
+<div class="text-[var(--granate)] text-3xl mb-4">💻</div>
+
+<h3 class="text-xl font-semibold mb-3">
+Asesoramiento Tecnológico
+</h3>
+
+<p class="text-gray-400">
+Consultoría para la adquisición de infraestructura y tecnología empresarial.
+</p>
+
+<div id="p8" class="accordion text-gray-400 mt-4">
+
+<ul class="list-disc ml-5 space-y-1">
+<li>Selección de hardware</li>
+<li>Recomendación de software empresarial</li>
+<li>Optimización de infraestructuras</li>
+<li>Planificación tecnológica</li>
+</ul>
+
+</div>
 </div>
 
 </div>
