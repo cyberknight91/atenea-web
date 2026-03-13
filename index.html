@@ -12,9 +12,23 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
+
 :root{
 --granate:#7a0019;
 }
+
+/* botones cookies */
+.cc-btn{
+margin-left:8px;
+border-radius:6px;
+font-weight:500;
+}
+
+/* espacio para banner cookies */
+body{
+padding-bottom:80px;
+}
+
 </style>
 
 </head>
@@ -347,14 +361,55 @@ Ver auditorías realizadas
 contacto@ateneaciberseguridad.com
 </p>
 
+<div class="mt-4 space-x-6 text-sm">
+
+<a href="aviso-legal.html" class="text-gray-400 hover:text-white">
+Aviso legal
+</a>
+
+<a href="politica-privacidad.html" class="text-gray-400 hover:text-white">
+Política de privacidad
+</a>
+
+<a href="politica-cookies.html" class="text-gray-400 hover:text-white">
+Política de cookies
+</a>
+
+</div>
+
 </div>
 
 </footer>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
 
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
+<script>
+window.addEventListener("load", function () {
+  if (window.cookieconsent) {
+    window.cookieconsent.initialise({
+      palette: {
+        popup: {
+          background: "#1f2937"
+        },
+        button: {
+          background: "#3b82f6"
+        }
+      },
+      theme: "classic",
+      position: "bottom",
+      type: "opt-in",
+      content: {
+        message: "Esta web utiliza cookies para mejorar la experiencia.",
+        allow: "Aceptar",
+        deny: "Rechazar",
+        link: "Política de cookies",
+        href: "/politica-cookies.html"
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
-
-
-</html>
-
 
