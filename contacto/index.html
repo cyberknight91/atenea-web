@@ -5,21 +5,26 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="assets/favicon.ico">
+
+<link rel="icon" type="image/png" href="/assets/favicon.png">
 
 <title>Contacto - Atenea Ciberseguridad</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
+
 :root{
 --granate:#7a0019;
 }
+
 </style>
 
 </head>
 
 <body class="bg-gray-900 text-white">
+
+<!-- NAVBAR -->
 
 <nav class="bg-black border-b border-gray-700">
 
@@ -43,7 +48,16 @@ Atenea Ciberseguridad
 </nav>
 
 
-<section class="py-24 text-center">
+<!-- HERO -->
+
+<section class="relative py-24 text-center overflow-hidden">
+
+<!-- LOGO DECORATIVO -->
+
+<img 
+src="/assets/logo.png"
+class="absolute left-[-220px] top-1/2 -translate-y-1/2 h-[420px] opacity-100 pointer-events-none"
+/>
 
 <h1 class="text-4xl font-bold mb-6">
 Contacto
@@ -58,6 +72,8 @@ puedes ponerte en contacto con nosotros a través del siguiente formulario.
 
 </section>
 
+
+<!-- FORMULARIO -->
 
 <section class="pb-24">
 
@@ -142,6 +158,8 @@ Enviar mensaje
 </section>
 
 
+<!-- INFO CONTACTO -->
+
 <section class="pb-24 text-center">
 
 <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 text-gray-300">
@@ -174,6 +192,8 @@ Teléfono / WhatsApp
 
 </section>
 
+
+<!-- FOOTER -->
 
 <footer class="bg-black border-t border-gray-700 py-10">
 
@@ -214,7 +234,7 @@ headers: {
 
 if(response.ok){
 
-window.location.href = "gracias.html";
+window.location.href = "/gracias.html";
 
 }else{
 
@@ -229,4 +249,3 @@ alert("Error enviando el formulario");
 
 </body>
 </html>
-
