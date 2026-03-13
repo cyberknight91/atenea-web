@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Política de Privacidad | Atenea Ciberseguridad</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-900 text-white">
+
+<div class="max-w-4xl mx-auto py-20 px-6">
+
+<h1 class="text-4xl font-bold mb-10">Política de Privacidad</h1>
+
+<p class="text-gray-300 mb-6">
+En Atenea Ciberseguridad nos comprometemos a proteger la privacidad
+de los usuarios y a garantizar la protección de los datos personales
+de acuerdo con el Reglamento General de Protección de Datos (RGPD).
+</p>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">Responsable del tratamiento</h2>
+
+<p class="text-gray-300 mb-6">
+Responsable: Atenea Ciberseguridad<br>
+Correo electrónico: contacto@ateneaciberseguridad.com
+</p>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">Finalidad del tratamiento</h2>
+
+<p class="text-gray-300 mb-6">
+Los datos personales que el usuario facilite a través de los formularios
+de contacto o mediante correo electrónico se utilizarán únicamente para
+gestionar consultas, solicitudes de información o servicios de auditoría
+de ciberseguridad.
+</p>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">Base legal</h2>
+
+<p class="text-gray-300 mb-6">
+La base legal para el tratamiento de los datos es el consentimiento
+del usuario al enviar voluntariamente sus datos de contacto.
+</p>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">Conservación de datos</h2>
+
+<p class="text-gray-300 mb-6">
+Los datos se conservarán únicamente durante el tiempo necesario
+para atender la solicitud del usuario o cumplir obligaciones legales.
+</p>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">Derechos del usuario</h2>
+
+<p class="text-gray-300 mb-6">
+El usuario puede ejercer sus derechos de acceso, rectificación,
+supresión, limitación y oposición al tratamiento de sus datos
+enviando una solicitud al correo electrónico:
+<strong>contacto@ateneaciberseguridad.com</strong>.
+</p>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">Seguridad de los datos</h2>
+
+<p class="text-gray-300">
+Atenea Ciberseguridad adopta las medidas técnicas y organizativas
+necesarias para garantizar la seguridad de los datos personales
+y evitar su alteración, pérdida o acceso no autorizado.
+</p>
+
+</div>
+
+</body>
+
+</html>
