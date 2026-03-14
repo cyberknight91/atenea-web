@@ -2,34 +2,250 @@
 <html lang="es">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensaje enviado · Atenea Ciberseguridad</title>
+  <meta name="robots" content="noindex, nofollow">
 
-<title>Mensaje enviado - Atenea Ciberseguridad</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
+    :root {
+      --granate: #7a0019;
+      --granate-dark: #5c0012;
+      --granate-glow: rgba(122, 0, 25, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a0a0f;
+      color: #e8e6e0;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    h1, h2 { font-family: 'Syne', sans-serif; }
+
+    /* Noise */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* Grid decorativo */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(122,0,25,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122,0,25,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glow central */
+    .bg-glow {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(122,0,25,0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Card */
+    .card {
+      position: relative;
+      z-index: 10;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 3.5rem 3rem;
+      text-align: center;
+      max-width: 480px;
+      width: 90%;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Icono check */
+    .check-ring {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(122,0,25,0.1);
+      border: 1px solid rgba(122,0,25,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      animation: scaleIn 0.5s ease 0.2s both;
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.6); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .check-ring svg {
+      width: 30px;
+      height: 30px;
+      color: #e07a90;
+    }
+
+    /* Divider */
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--granate);
+      border-radius: 2px;
+      margin: 1.5rem auto;
+      opacity: 0.6;
+    }
+
+    /* Botones */
+    .btn-primary {
+      display: inline-block;
+      background: var(--granate);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.02em;
+      padding: 0.8rem 1.75rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--granate-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--granate-glow);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      color: rgba(232,230,224,0.45);
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    /* Logo abajo */
+    .bottom-brand {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      opacity: 0.35;
+      transition: opacity 0.2s;
+    }
+
+    .bottom-brand:hover { opacity: 0.7; }
+
+    .bottom-brand img { height: 22px; width: auto; }
+
+    .bottom-brand span {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .bottom-brand span em {
+      color: var(--granate);
+      font-style: normal;
+    }
+  </style>
 </head>
 
-<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
+<body>
 
-<div class="text-center">
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
 
-<h1 class="text-4xl font-bold mb-6">
-Mensaje enviado correctamente
-</h1>
+  <div class="card">
 
-<p class="text-gray-400 mb-8">
-Gracias por contactar con Atenea Ciberseguridad. Nuestro equipo responderá lo antes posible.
-</p>
+    <div class="check-ring">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+      </svg>
+    </div>
 
-<a href="index.html" class="px-6 py-3 rounded bg-red-900 hover:bg-red-800">
-Volver al inicio
-</a>
+    <h1 style="font-size:1.6rem; font-weight:800; letter-spacing:-0.02em; color:#fff; margin-bottom:0.75rem;">
+      Mensaje recibido
+    </h1>
 
-</div>
+    <div class="divider"></div>
+
+    <p style="font-size:0.9rem; color:rgba(232,230,224,0.5); line-height:1.8; font-weight:300; margin-bottom:0.5rem;">
+      Gracias por contactar con Atenea Ciberseguridad.
+      Nuestro equipo revisará su consulta y le responderá
+      en un plazo máximo de <strong style="color:rgba(232,230,224,0.75); font-weight:500;">48 horas hábiles</strong>.
+    </p>
+
+    <p style="font-size:0.8rem; color:rgba(232,230,224,0.25); font-weight:300; margin-bottom:2rem;">
+      Si tiene cualquier urgencia puede contactarnos directamente en<br>
+      <a href="mailto:contacto@ateneaciberseguridad.com"
+         style="color:rgba(232,230,224,0.4); transition:color 0.2s;"
+         onmouseover="this.style.color='#fff'"
+         onmouseout="this.style.color='rgba(232,230,224,0.4)'">
+        contacto@ateneaciberseguridad.com
+      </a>
+    </p>
+
+    <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+      <a href="/" class="btn-primary">Volver al inicio</a>
+      <a href="/auditorias/" class="btn-secondary">Ver servicios</a>
+    </div>
+
+  </div>
+
+  <a href="/" class="bottom-brand">
+    <img src="/assets/logo.png" alt="Atenea Ciberseguridad">
+    <span><em>Atenea</em> Ciberseguridad</span>
+  </a>
 
 </body>
-
 </html>
