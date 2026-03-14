@@ -2,368 +2,719 @@
 <html lang="es">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Servicios - Atenea Ciberseguridad</title>
+  <!-- SEO -->
+  <title>Servicios de Ciberseguridad · Atenea Ciberseguridad</title>
+  <meta name="description" content="Servicios de pentesting, auditoría web, análisis de vulnerabilidades, hardening, SOC y consultoría normativa. Protegemos su infraestructura digital con metodologías contrastadas.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.ateneaciberseguridad.com/auditorias/">
 
-<link rel="icon" type="image/png" href="/assets/favicon.ico">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ateneaciberseguridad.com/auditorias/">
+  <meta property="og:title" content="Servicios de Ciberseguridad · Atenea Ciberseguridad">
+  <meta property="og:description" content="Pentesting, auditoría web, análisis de vulnerabilidades, hardening y consultoría normativa para organizaciones públicas y privadas.">
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
-:root{
---granate:#7a0019;
-}
+    :root {
+      --granate: #7a0019;
+      --granate-dark: #5c0012;
+      --granate-glow: rgba(122, 0, 25, 0.35);
+    }
 
-.card-glow:hover{
-box-shadow:0 0 25px rgba(122,0,25,0.7);
-}
+    * { box-sizing: border-box; }
 
-@keyframes float{
-0%{transform:translateY(0px)}
-50%{transform:translateY(-6px)}
-100%{transform:translateY(0px)}
-}
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a0a0f;
+      color: #e8e6e0;
+      overflow-x: hidden;
+    }
 
-.float{
-animation:float 4s ease-in-out infinite;
-}
+    h1, h2, h3, h4, .brand { font-family: 'Syne', sans-serif; }
 
-.accordion{
-max-height:0;
-overflow:hidden;
-transition:max-height .4s ease;
-}
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
 
-</style>
+    /* ---- NAVBAR ---- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(122, 0, 25, 0.2);
+    }
 
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand span { color: var(--granate); }
+
+    nav a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgba(232, 230, 224, 0.65);
+      transition: color 0.2s;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+
+    nav a:hover { color: #fff; }
+
+    .nav-cta {
+      background: var(--granate);
+      color: #fff !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--granate-dark) !important; }
+
+    #menu-toggle { display: none; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #e8e6e0;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        border-top: 1px solid rgba(255,255,255,0.07);
+        padding: 0.75rem 0 0.5rem;
+      }
+      .nav-links a {
+        padding: 0.6rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        font-size: 0.95rem;
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      #menu-toggle:checked ~ .nav-links { display: flex; }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(2) { opacity: 0; }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+
+    /* ---- HERO ---- */
+    .page-hero {
+      position: relative;
+      padding: 5.5rem 0 4rem;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(122,0,25,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122,0,25,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 30%, transparent 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 450px;
+      background: radial-gradient(ellipse, rgba(122,0,25,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--granate);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ---- SERVICE CARDS ---- */
+    .service-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--granate);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover,
+    .service-card.open {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(122,0,25,0.3);
+      transform: translateY(-2px);
+    }
+
+    .service-card:hover::before,
+    .service-card.open::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(122,0,25,0.12);
+      border: 1px solid rgba(122,0,25,0.25);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card .summary {
+      font-size: 0.875rem;
+      color: rgba(232,230,224,0.5);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Accordion */
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .service-card.open .accordion-body {
+      opacity: 1;
+    }
+
+    .accordion-body ul {
+      margin-top: 1.1rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .accordion-body li {
+      font-size: 0.83rem;
+      color: rgba(232,230,224,0.5);
+      font-weight: 300;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .accordion-body li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      min-width: 4px;
+      background: var(--granate);
+      border-radius: 50%;
+      margin-top: 6px;
+    }
+
+    .toggle-icon {
+      font-size: 1rem;
+      color: var(--granate);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-left: auto;
+      margin-top: -2px;
+    }
+
+    .service-card.open .toggle-icon { transform: rotate(45deg); }
+
+    /* ---- CTA ---- */
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(122,0,25,0.1) 0%, transparent 70%);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--granate);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--granate-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--granate-glow);
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: #060608;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    footer a { color: rgba(232,230,224,0.3); transition: color 0.2s; text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* ---- FADE IN ---- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ---- COOKIES ---- */
+    .cc-btn { margin-left: 8px; border-radius: 6px; font-weight: 500; }
+    body { padding-bottom: 80px; }
+  </style>
 </head>
 
-<body class="bg-gray-900 text-white">
+<body>
 
 <!-- NAVBAR -->
+<nav>
+  <div class="max-w-6xl mx-auto px-5 py-4">
+    <div class="flex justify-between items-center">
 
-<nav class="bg-black border-b border-gray-700">
+      <a href="/" class="brand">
+        <img src="/assets/logo.png" alt="Atenea Ciberseguridad" style="height:34px; width:auto;">
+        <span><span>Atenea</span> Ciberseguridad</span>
+      </a>
 
-<div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+      <input type="checkbox" id="menu-toggle" class="hidden">
+      <label for="menu-toggle">
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </label>
 
-<h1 class="font-bold text-lg">Atenea Ciberseguridad</h1>
+      <div class="nav-links flex items-center gap-7">
+        <a href="/">Inicio</a>
+        <a href="/auditorias/" style="color:#fff;">Servicios</a>
+        <a href="/quienes-somos/">Quiénes somos</a>
+        <a href="/contacto/" class="nav-cta">Contacto</a>
+      </div>
 
-<div class="space-x-6">
-
-<a href="/" class="hover:text-white">Inicio</a>
-<a href="/auditorias/" class="hover:text-white">Servicios</a>
-<a href="/quienes-somos/" class="hover:text-white">Quiénes somos</a>
-<a href="/contacto/" class="hover:text-white">Contacto</a>
-
-</div>
-
-</div>
-
+    </div>
+  </div>
 </nav>
 
+
 <!-- HERO -->
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
 
-<section class="relative py-28 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
 
-<div class="max-w-6xl mx-auto relative px-6 text-center">
+    <img src="/assets/logo.png" alt="" aria-hidden="true" class="hidden lg:block"
+      style="position:absolute; right:0; top:50%; transform:translateY(-50%); height:320px; width:auto; opacity:0.06; pointer-events:none;">
 
-<div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,#7a0019,transparent_70%)]"></div>
+    <p class="page-label">Servicios</p>
 
-<h1 class="text-5xl font-bold mb-6 float">
-Servicios de <span class="text-[var(--granate)]">Ciberseguridad</span>
-</h1>
+    <h1 style="font-size:clamp(2.4rem, 6vw, 4.5rem); font-weight:800; letter-spacing:-0.03em; color:#fff; line-height:1.05; margin-bottom:1.2rem;">
+      Servicios de <span style="color:var(--granate)">ciberseguridad</span>
+    </h1>
 
-<p class="text-gray-400 max-w-3xl mx-auto text-lg">
-Protegemos infraestructuras digitales mediante auditorías de seguridad,
-análisis de vulnerabilidades y soluciones de protección de datos para empresas.
-</p>
+    <p style="font-size:1rem; color:rgba(232,230,224,0.5); max-width:560px; margin:0 auto 2.5rem; line-height:1.75; font-weight:300;">
+      Evaluamos y protegemos infraestructuras digitales mediante metodologías de análisis ofensivo
+      contrastadas internacionalmente. Haga clic en cada servicio para ampliar la información.
+    </p>
 
-<div class="mt-10">
+    <a href="/contacto/" class="btn-primary">Solicitar información</a>
 
-<a href="/contacto/"
-class="bg-[var(--granate)] px-8 py-3 rounded-lg font-semibold
-hover:shadow-lg hover:shadow-[var(--granate)]/50
-hover:scale-105 transition duration-300">
-
-Solicitar Información
-
-</a>
-
-</div>
-
-</div>
-
+  </div>
 </section>
+
 
 <!-- SERVICIOS -->
-
-<section class="py-20">
-
-<div class="max-w-6xl mx-auto px-6">
-
-<h2 class="text-4xl font-bold text-center mb-16">
-Servicios
-</h2>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-<!-- Pentesting -->
-
-<div onclick="toggleAccordion('p1')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
-
-<div class="text-[var(--granate)] text-3xl mb-4">🛡️</div>
-
-<h3 class="text-xl font-semibold mb-3">
-Pentesting de Infraestructura
-</h3>
-
-<p class="text-gray-400">
-Evaluación de redes internas y externas para detectar vulnerabilidades.
-</p>
-
-<div id="p1" class="accordion text-gray-400 mt-4">
-
-<ul class="list-disc ml-5 space-y-1">
-<li>Escaneo de puertos y servicios</li>
-<li>Enumeración de sistemas</li>
-<li>Explotación controlada</li>
-<li>Escalada de privilegios</li>
-<li>Informe técnico detallado</li>
-</ul>
-
-</div>
-</div>
-
-<!-- Auditoría Web -->
-
-<div onclick="toggleAccordion('p2')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
-
-<div class="text-[var(--granate)] text-3xl mb-4">🌐</div>
-
-<h3 class="text-xl font-semibold mb-3">
-Auditoría Web
-</h3>
-
-<p class="text-gray-400">
-Detección de vulnerabilidades OWASP.
-</p>
-
-<div id="p2" class="accordion text-gray-400 mt-4">
-
-<ul class="list-disc ml-5 space-y-1">
-<li>SQL Injection</li>
-<li>Cross-Site Scripting (XSS)</li>
-<li>Control de acceso incorrecto</li>
-<li>Fallos de autenticación</li>
-<li>Configuraciones inseguras</li>
-</ul>
-
-</div>
-</div>
-
-<!-- Vulnerabilidades -->
-
-<div onclick="toggleAccordion('p3')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
-
-<div class="text-[var(--granate)] text-3xl mb-4">🔍</div>
-
-<h3 class="text-xl font-semibold mb-3">
-Análisis de Vulnerabilidades
-</h3>
-
-<p class="text-gray-400">
-Identificación y priorización de vulnerabilidades.
-</p>
-
-<div id="p3" class="accordion text-gray-400 mt-4">
-
-<ul class="list-disc ml-5 space-y-1">
-<li>Escaneo automatizado</li>
-<li>Validación manual</li>
-<li>Clasificación CVSS</li>
-<li>Priorización de riesgos</li>
-</ul>
-
-</div>
-</div>
-
-<!-- Configuración -->
-
-<div onclick="toggleAccordion('p4')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
-
-<div class="text-[var(--granate)] text-3xl mb-4">⚙️</div>
-
-<h3 class="text-xl font-semibold mb-3">
-Auditoría de Configuración
-</h3>
-
-<p class="text-gray-400">
-Revisión de configuraciones de seguridad.
-</p>
-
-<div id="p4" class="accordion text-gray-400 mt-4">
-
-<ul class="list-disc ml-5 space-y-1">
-<li>Hardening de sistemas</li>
-<li>Revisión de Active Directory</li>
-<li>Configuración de servidores</li>
-</ul>
-
-</div>
-</div>
-
-<!-- Seguridad de red -->
-
-<div onclick="toggleAccordion('p5')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
-
-<div class="text-[var(--granate)] text-3xl mb-4">📡</div>
-
-<h3 class="text-xl font-semibold mb-3">
-Seguridad de Red
-</h3>
-
-<p class="text-gray-400">
-Evaluación de arquitectura de red.
-</p>
-
-<div id="p5" class="accordion text-gray-400 mt-4">
-
-<ul class="list-disc ml-5 space-y-1">
-<li>Segmentación de red</li>
-<li>Análisis de firewall</li>
-<li>Evaluación de VPN</li>
-</ul>
-
-</div>
-</div>
-
-<!-- IA -->
-
-<div onclick="toggleAccordion('p6')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
-
-<div class="text-[var(--granate)] text-3xl mb-4">🤖</div>
-
-<h3 class="text-xl font-semibold mb-3">
-Análisis con IA
-</h3>
-
-<p class="text-gray-400">
-Detección avanzada de amenazas.
-</p>
-
-<div id="p6" class="accordion text-gray-400 mt-4">
-
-<ul class="list-disc ml-5 space-y-1">
-<li>Análisis de patrones de ataque</li>
-<li>Correlación de eventos</li>
-<li>Detección de anomalías</li>
-</ul>
-
-</div>
-</div>
-
-<!-- Backup nube -->
-
-<div onclick="toggleAccordion('p7')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
-
-<div class="text-[var(--granate)] text-3xl mb-4">☁️</div>
-
-<h3 class="text-xl font-semibold mb-3">
-Copias de Seguridad en la Nube
-</h3>
-
-<p class="text-gray-400">
-Protección automática de datos críticos mediante sistemas de respaldo seguro.
-</p>
-
-<div id="p7" class="accordion text-gray-400 mt-4">
-
-<ul class="list-disc ml-5 space-y-1">
-<li>Backups automáticos</li>
-<li>Recuperación ante ransomware</li>
-<li>Protección de servidores y PCs</li>
-<li>Versionado de archivos</li>
-</ul>
-
-</div>
-</div>
-<!-- Monitorización -->
-
-<div onclick="toggleAccordion('p9')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
-
-<div class="text-[var(--granate)] text-3xl mb-4">🛰️</div>
-
-<h3 class="text-xl font-semibold mb-3">
-Monitorización de Seguridad
-</h3>
-
-<p class="text-gray-400">
-Supervisión continua de sistemas para detectar ataques y comportamientos anómalos.
-</p>
-
-<div id="p9" class="accordion text-gray-400 mt-4">
-
-<ul class="list-disc ml-5 space-y-1">
-
-<li>Monitorización de logs</li>
-<li>Detección de intrusiones</li>
-<li>Alertas de seguridad</li>
-<li>Análisis de actividad sospechosa</li>
-
-</ul>
-
-</div>
-
-</div>
-<!-- Asesoramiento -->
-
-<div onclick="toggleAccordion('p8')" class="cursor-pointer card-glow bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-[var(--granate)] transition duration-300">
-
-<div class="text-[var(--granate)] text-3xl mb-4">💻</div>
-
-<h3 class="text-xl font-semibold mb-3">
-Asesoramiento Tecnológico
-</h3>
-
-<p class="text-gray-400">
-Consultoría para la adquisición de infraestructura y tecnología empresarial.
-</p>
-
-<div id="p8" class="accordion text-gray-400 mt-4">
-
-<ul class="list-disc ml-5 space-y-1">
-<li>Selección de hardware</li>
-<li>Recomendación de software empresarial</li>
-<li>Optimización de infraestructuras</li>
-<li>Planificación tecnológica</li>
-</ul>
-
-</div>
-</div>
-
-</div>
-
-</div>
-
+<section class="py-20 relative z-10" style="background:#0a0a0f;">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="mb-14 fade-up text-center">
+      <p class="page-label">Catálogo completo</p>
+      <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.8rem,4vw,2.5rem); font-weight:800; color:#fff; letter-spacing:-0.025em;">
+        ¿En qué podemos ayudarle?
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Pentesting -->
+      <div class="service-card fade-up" onclick="toggleCard(this)">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+          <div>
+            <div class="service-icon">🛡️</div>
+            <h3>Pentesting de infraestructura</h3>
+            <p class="summary">Evaluación de redes internas y externas mediante simulación de ataques reales para detectar vulnerabilidades explotables.</p>
+          </div>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Escaneo de puertos y servicios expuestos</li>
+            <li>Enumeración de sistemas y tecnologías</li>
+            <li>Explotación controlada de vulnerabilidades</li>
+            <li>Escalada de privilegios y movimiento lateral</li>
+            <li>Informe técnico y ejecutivo con clasificación CVSS</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Auditoría Web -->
+      <div class="service-card fade-up" style="transition-delay:0.06s" onclick="toggleCard(this)">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+          <div>
+            <div class="service-icon">🌐</div>
+            <h3>Auditoría de aplicaciones web</h3>
+            <p class="summary">Detección de vulnerabilidades según el estándar OWASP Top 10 en aplicaciones web, APIs REST y entornos web complejos.</p>
+          </div>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Inyección SQL y NoSQL</li>
+            <li>Cross-Site Scripting (XSS)</li>
+            <li>Fallos de autenticación y gestión de sesiones</li>
+            <li>Control de acceso incorrecto (IDOR, BOLA)</li>
+            <li>Configuraciones inseguras y exposición de datos</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Análisis de vulnerabilidades -->
+      <div class="service-card fade-up" style="transition-delay:0.12s" onclick="toggleCard(this)">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+          <div>
+            <div class="service-icon">🔍</div>
+            <h3>Análisis de vulnerabilidades</h3>
+            <p class="summary">Identificación, validación y priorización de vulnerabilidades en toda la superficie de ataque de la organización.</p>
+          </div>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Escaneo automatizado con herramientas especializadas</li>
+            <li>Validación manual para eliminar falsos positivos</li>
+            <li>Clasificación por criticidad según CVSS v3.1</li>
+            <li>Priorización de riesgos según impacto en el negocio</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Hardening -->
+      <div class="service-card fade-up" style="transition-delay:0.18s" onclick="toggleCard(this)">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+          <div>
+            <div class="service-icon">⚙️</div>
+            <h3>Hardening y auditoría de configuración</h3>
+            <p class="summary">Revisión y refuerzo de configuraciones de seguridad en sistemas, servidores y directorio activo.</p>
+          </div>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Hardening de sistemas según guías CIS y NIST</li>
+            <li>Revisión y auditoría de Active Directory</li>
+            <li>Configuración segura de servidores y servicios</li>
+            <li>Reducción de superficie de ataque</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Seguridad de red -->
+      <div class="service-card fade-up" style="transition-delay:0.24s" onclick="toggleCard(this)">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+          <div>
+            <div class="service-icon">📡</div>
+            <h3>Seguridad de red</h3>
+            <p class="summary">Evaluación de la arquitectura de red para identificar debilidades en la segmentación, perímetro y accesos remotos.</p>
+          </div>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Análisis de segmentación y zonas de red</li>
+            <li>Revisión de reglas de firewall y ACLs</li>
+            <li>Evaluación de accesos VPN y Zero Trust</li>
+            <li>Detección de dispositivos no inventariados</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SOC / Monitorización -->
+      <div class="service-card fade-up" style="transition-delay:0.30s" onclick="toggleCard(this)">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+          <div>
+            <div class="service-icon">🛰️</div>
+            <h3>SOC y monitorización continua</h3>
+            <p class="summary">Supervisión activa del entorno para detectar ataques, intrusiones y comportamientos anómalos en tiempo real.</p>
+          </div>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Monitorización y análisis de logs</li>
+            <li>Detección de intrusiones (IDS/IPS)</li>
+            <li>Alertas de seguridad y respuesta a incidentes</li>
+            <li>Correlación de eventos y detección de anomalías</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- IA -->
+      <div class="service-card fade-up" style="transition-delay:0.36s" onclick="toggleCard(this)">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+          <div>
+            <div class="service-icon">🤖</div>
+            <h3>Detección avanzada con IA</h3>
+            <p class="summary">Aplicación de modelos de inteligencia artificial para identificar patrones de ataque y amenazas persistentes.</p>
+          </div>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Análisis de patrones de ataque mediante ML</li>
+            <li>Correlación avanzada de eventos de seguridad</li>
+            <li>Detección de amenazas persistentes (APT)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Backup nube -->
+      <div class="service-card fade-up" style="transition-delay:0.42s" onclick="toggleCard(this)">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+          <div>
+            <div class="service-icon">☁️</div>
+            <h3>Copias de seguridad en la nube</h3>
+            <p class="summary">Protección automática de datos críticos mediante sistemas de respaldo seguro con recuperación ante ransomware.</p>
+          </div>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Backups automáticos cifrados</li>
+            <li>Recuperación ante ataques de ransomware</li>
+            <li>Protección de servidores y endpoints</li>
+            <li>Versionado y retención configurable de archivos</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Consultoría normativa -->
+      <div class="service-card fade-up" style="transition-delay:0.48s" onclick="toggleCard(this)">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+          <div>
+            <div class="service-icon">💻</div>
+            <h3>Consultoría normativa</h3>
+            <p class="summary">Asesoramiento en cumplimiento de ENS, ISO 27001, RGPD y NIS2, desde el análisis de brechas hasta la certificación.</p>
+          </div>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Análisis de brechas y diagnóstico inicial</li>
+            <li>Implementación de controles y políticas</li>
+            <li>Acompañamiento durante el proceso de certificación</li>
+            <li>Adecuación a ENS, ISO 27001, RGPD y NIS2</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
+
+<!-- CTA -->
+<section class="cta-section py-24 relative z-10">
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10 fade-up">
+
+    <p class="page-label" style="text-align:center; margin-bottom:1rem;">¿Hablamos?</p>
+    <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:#fff; letter-spacing:-0.025em; line-height:1.1; margin-bottom:1.2rem;">
+      ¿No sabe por dónde empezar?<br>
+      <span style="color:var(--granate)">Nosotros le orientamos.</span>
+    </h2>
+
+    <p style="color:rgba(232,230,224,0.5); font-size:1rem; line-height:1.75; max-width:460px; margin:0 auto 2.5rem; font-weight:300;">
+      Primera consulta sin coste ni compromiso. Analizamos su situación y le recomendamos el servicio más adecuado para su organización.
+    </p>
+
+    <a href="/contacto/" class="btn-primary" style="font-size:1rem; padding:1rem 2.5rem;">
+      Contactar ahora
+    </a>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="py-12 relative z-10">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+
+      <div>
+        <a href="/" style="display:flex; align-items:center; gap:8px; text-decoration:none; margin-bottom:0.75rem;">
+          <img src="/assets/logo.png" alt="" aria-hidden="true" style="height:28px; width:auto; opacity:0.85;">
+          <span style="font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:800; color:#fff;">
+            <span style="color:var(--granate)">Atenea</span> Ciberseguridad
+          </span>
+        </a>
+        <p style="font-size:0.83rem; color:rgba(232,230,224,0.35); line-height:1.65; font-weight:300;">
+          Empresa especializada en seguridad ofensiva, auditorías técnicas y consultoría de ciberseguridad para organizaciones públicas y privadas.
+        </p>
+      </div>
+
+      <div>
+        <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.3); margin-bottom:0.8rem; font-weight:600;">Servicios</p>
+        <div class="flex flex-col gap-2">
+          <a href="/auditorias/">Pentesting</a>
+          <a href="/auditorias/">Auditorías técnicas</a>
+          <a href="/auditorias/">SOC & Monitorización</a>
+          <a href="/auditorias/">Consultoría normativa</a>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.3); margin-bottom:0.8rem; font-weight:600;">Contacto</p>
+        <a href="mailto:contacto@ateneaciberseguridad.com" style="font-size:0.85rem;">
+          contacto@ateneaciberseguridad.com
+        </a>
+      </div>
+
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem;">
+      <p style="font-size:0.8rem; color:rgba(232,230,224,0.25);">© 2026 Atenea Ciberseguridad</p>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="/aviso-legal.html" style="font-size:0.8rem;">Aviso legal</a>
+        <a href="/politica-privacidad.html" style="font-size:0.8rem;">Privacidad</a>
+        <a href="/politica-cookies.html" style="font-size:0.8rem;">Cookies</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- COOKIES -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 <script>
+window.addEventListener("load", function () {
+  if (window.cookieconsent) {
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: "#0f0f18", text: "#b0aea8" },
+        button: { background: "#7a0019", text: "#ffffff" }
+      },
+      theme: "classic",
+      position: "bottom",
+      type: "opt-in",
+      content: {
+        message: "Esta web utiliza cookies para mejorar la experiencia.",
+        allow: "Aceptar",
+        deny: "Rechazar",
+        link: "Política de cookies",
+        href: "/politica-cookies.html"
+      }
+    });
+  }
+});
 
-function toggleAccordion(id){
+// Accordion toggle
+function toggleCard(card) {
+  const body = card.querySelector('.accordion-body');
+  const isOpen = card.classList.contains('open');
 
-const el=document.getElementById(id)
+  // Cerrar todos
+  document.querySelectorAll('.service-card.open').forEach(c => {
+    c.classList.remove('open');
+    c.querySelector('.accordion-body').style.maxHeight = null;
+  });
 
-if(el.style.maxHeight){
-el.style.maxHeight=null
-}else{
-el.style.maxHeight=el.scrollHeight+"px"
+  // Abrir el clicado si estaba cerrado
+  if (!isOpen) {
+    card.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
 }
 
-}
-
+// Fade-up on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
 </body>
