@@ -2,77 +2,573 @@
 <html lang="es">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad · Atenea Ciberseguridad</title>
+  <meta name="description" content="Política de privacidad de Atenea Ciberseguridad. Información sobre el tratamiento de datos personales conforme al RGPD.">
+  <meta name="robots" content="noindex, follow">
 
-<title>Política de Privacidad | Atenea Ciberseguridad</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
+    :root {
+      --granate: #7a0019;
+      --granate-dark: #5c0012;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a0a0f;
+      color: #e8e6e0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .brand { font-family: 'Syne', sans-serif; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ---- NAVBAR ---- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(122, 0, 25, 0.2);
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand span { color: var(--granate); }
+
+    nav a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgba(232, 230, 224, 0.65);
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+
+    nav a:hover { color: #fff; }
+
+    .nav-cta {
+      background: var(--granate);
+      color: #fff !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--granate-dark) !important; }
+
+    #menu-toggle { display: none; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #e8e6e0; border-radius: 2px; transition: all 0.25s; }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; flex-direction: column; gap: 0; width: 100%; border-top: 1px solid rgba(255,255,255,0.07); padding: 0.75rem 0 0.5rem; }
+      .nav-links a { padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; }
+      .nav-links a:last-child { border-bottom: none; }
+      #menu-toggle:checked ~ .nav-links { display: flex; }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(2) { opacity: 0; }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+
+    /* ---- CONTENIDO LEGAL ---- */
+    .legal-section {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .legal-header {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding-bottom: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .page-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--granate);
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-block {
+      padding-bottom: 2.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .legal-block:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .legal-block h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .legal-block h2::before {
+      content: '';
+      width: 3px;
+      height: 18px;
+      background: var(--granate);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .legal-block p {
+      font-size: 0.9rem;
+      color: rgba(232,230,224,0.5);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-block p:last-child { margin-bottom: 0; }
+
+    .legal-block ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .legal-block ul li {
+      font-size: 0.9rem;
+      color: rgba(232,230,224,0.5);
+      line-height: 1.7;
+      font-weight: 300;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .legal-block ul li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      min-width: 4px;
+      background: var(--granate);
+      border-radius: 50%;
+      margin-top: 8px;
+    }
+
+    .info-box {
+      background: rgba(122,0,25,0.06);
+      border: 1px solid rgba(122,0,25,0.2);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .info-box p { color: rgba(232,230,224,0.55) !important; margin-bottom: 0 !important; }
+    .info-box strong { color: rgba(232,230,224,0.8); font-weight: 500; }
+
+    /* Tabla de derechos */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .right-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      transition: border-color 0.2s;
+    }
+
+    .right-item:hover { border-color: rgba(122,0,25,0.3); }
+
+    .right-item strong {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: rgba(232,230,224,0.8);
+      margin-bottom: 0.3rem;
+    }
+
+    .right-item span {
+      font-size: 0.78rem;
+      color: rgba(232,230,224,0.35);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 1.5rem;
+      position: sticky;
+      top: 80px;
+    }
+
+    .toc-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(232,230,224,0.3);
+      margin-bottom: 1rem;
+    }
+
+    .toc a {
+      display: block;
+      font-size: 0.82rem;
+      color: rgba(232,230,224,0.4);
+      text-decoration: none;
+      padding: 0.35rem 0;
+      border-left: 2px solid transparent;
+      padding-left: 0.75rem;
+      transition: all 0.2s;
+      font-weight: 300;
+    }
+
+    .toc a:hover { color: #fff; border-left-color: var(--granate); }
+
+    /* Footer */
+    footer { background: #060608; border-top: 1px solid rgba(255,255,255,0.06); }
+    footer a { color: rgba(232,230,224,0.3); transition: color 0.2s; text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    .cc-btn { margin-left: 8px; border-radius: 6px; font-weight: 500; }
+    body { padding-bottom: 80px; }
+  </style>
 </head>
 
-<body class="bg-gray-900 text-white">
+<body>
 
-<div class="max-w-4xl mx-auto py-20 px-6">
+<!-- NAVBAR -->
+<nav>
+  <div class="max-w-6xl mx-auto px-5 py-4">
+    <div class="flex justify-between items-center">
+      <a href="/" class="brand">
+        <img src="/assets/logo.png" alt="Atenea Ciberseguridad" style="height:34px; width:auto;">
+        <span><span>Atenea</span> Ciberseguridad</span>
+      </a>
+      <input type="checkbox" id="menu-toggle" class="hidden">
+      <label for="menu-toggle">
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </label>
+      <div class="nav-links flex items-center gap-7">
+        <a href="/">Inicio</a>
+        <a href="/auditorias/">Servicios</a>
+        <a href="/quienes-somos/">Quiénes somos</a>
+        <a href="/contacto/" class="nav-cta">Contacto</a>
+      </div>
+    </div>
+  </div>
+</nav>
 
-<h1 class="text-4xl font-bold mb-10">Política de Privacidad</h1>
 
-<p class="text-gray-300 mb-6">
-En Atenea Ciberseguridad nos comprometemos a proteger la privacidad
-de los usuarios y a garantizar la protección de los datos personales
-de acuerdo con el Reglamento General de Protección de Datos (RGPD).
-</p>
+<!-- CONTENIDO -->
+<section class="legal-section">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-4 gap-12">
 
-<h2 class="text-2xl font-bold mt-10 mb-4">Responsable del tratamiento</h2>
+      <!-- Índice lateral -->
+      <div class="hidden lg:block">
+        <div class="toc">
+          <p class="toc-title">Contenido</p>
+          <a href="#responsable">Responsable</a>
+          <a href="#finalidad">Finalidad</a>
+          <a href="#base-legal">Base legal</a>
+          <a href="#destinatarios">Destinatarios</a>
+          <a href="#conservacion">Conservación</a>
+          <a href="#derechos">Derechos del usuario</a>
+          <a href="#seguridad">Seguridad</a>
+          <a href="#cambios">Cambios en la política</a>
+        </div>
+      </div>
 
-<p class="text-gray-300 mb-6">
-Responsable: Atenea Ciberseguridad<br>
-Correo electrónico: contacto@ateneaciberseguridad.com
-</p>
+      <!-- Texto -->
+      <div class="lg:col-span-3">
 
-<h2 class="text-2xl font-bold mt-10 mb-4">Finalidad del tratamiento</h2>
+        <div class="legal-header">
+          <p class="page-label">Privacidad</p>
+          <h1 style="font-size:clamp(2rem,5vw,3rem); font-weight:800; letter-spacing:-0.03em; color:#fff; line-height:1.05; margin-bottom:0.75rem;">
+            Política de Privacidad
+          </h1>
+          <p style="font-size:0.875rem; color:rgba(232,230,224,0.3); font-weight:300;">
+            Última actualización: marzo de 2026
+          </p>
+        </div>
 
-<p class="text-gray-300 mb-6">
-Los datos personales que el usuario facilite a través de los formularios
-de contacto o mediante correo electrónico se utilizarán únicamente para
-gestionar consultas, solicitudes de información o servicios de auditoría
-de ciberseguridad.
-</p>
+        <div class="legal-block">
+          <p>
+            En Atenea Ciberseguridad nos comprometemos a proteger la privacidad de los usuarios y a garantizar
+            el tratamiento de los datos personales de conformidad con el Reglamento (UE) 2016/679 (RGPD) y la
+            Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).
+          </p>
+        </div>
 
-<h2 class="text-2xl font-bold mt-10 mb-4">Base legal</h2>
+        <div id="responsable" class="legal-block">
+          <h2>Responsable del tratamiento</h2>
+          <div class="info-box">
+            <p>
+              <strong>Denominación:</strong> Atenea Ciberseguridad<br>
+              <strong>Actividad:</strong> Auditoría de seguridad, pentesting y consultoría en ciberseguridad<br>
+              <strong>Correo electrónico:</strong>
+              <a href="mailto:contacto@ateneaciberseguridad.com"
+                 style="color:rgba(232,230,224,0.5); transition:color 0.2s;"
+                 onmouseover="this.style.color='#fff'"
+                 onmouseout="this.style.color='rgba(232,230,224,0.5)'">
+                contacto@ateneaciberseguridad.com
+              </a>
+            </p>
+          </div>
+        </div>
 
-<p class="text-gray-300 mb-6">
-La base legal para el tratamiento de los datos es el consentimiento
-del usuario al enviar voluntariamente sus datos de contacto.
-</p>
+        <div id="finalidad" class="legal-block">
+          <h2>Finalidad del tratamiento</h2>
+          <p>
+            Los datos personales facilitados por el usuario a través de los formularios de contacto del sitio web
+            o mediante correo electrónico se tratarán exclusivamente para las siguientes finalidades:
+          </p>
+          <ul>
+            <li>Gestionar y responder las consultas, solicitudes de información o peticiones de presupuesto enviadas por el usuario.</li>
+            <li>Tramitar contrataciones de servicios de auditoría de seguridad, pentesting o consultoría.</li>
+            <li>Mantener la relación comercial y el seguimiento de proyectos en curso.</li>
+            <li>Cumplir con las obligaciones legales aplicables al prestador de servicios.</li>
+          </ul>
+          <p style="margin-top:0.75rem;">
+            Los datos no se utilizarán para ninguna finalidad distinta a las indicadas sin el consentimiento previo del usuario.
+          </p>
+        </div>
 
-<h2 class="text-2xl font-bold mt-10 mb-4">Conservación de datos</h2>
+        <div id="base-legal" class="legal-block">
+          <h2>Base legal del tratamiento</h2>
+          <p>El tratamiento de los datos personales se sustenta en las siguientes bases legales según el RGPD:</p>
+          <ul>
+            <li><strong style="color:rgba(232,230,224,0.7); font-weight:500;">Consentimiento del interesado</strong> (Art. 6.1.a RGPD): cuando el usuario envía voluntariamente sus datos a través de los formularios de contacto.</li>
+            <li><strong style="color:rgba(232,230,224,0.7); font-weight:500;">Ejecución de un contrato</strong> (Art. 6.1.b RGPD): cuando el tratamiento es necesario para la prestación de los servicios contratados.</li>
+            <li><strong style="color:rgba(232,230,224,0.7); font-weight:500;">Interés legítimo</strong> (Art. 6.1.f RGPD): para el mantenimiento y seguimiento de la relación comercial.</li>
+            <li><strong style="color:rgba(232,230,224,0.7); font-weight:500;">Obligación legal</strong> (Art. 6.1.c RGPD): para el cumplimiento de obligaciones derivadas de la normativa aplicable.</li>
+          </ul>
+        </div>
 
-<p class="text-gray-300 mb-6">
-Los datos se conservarán únicamente durante el tiempo necesario
-para atender la solicitud del usuario o cumplir obligaciones legales.
-</p>
+        <div id="destinatarios" class="legal-block">
+          <h2>Destinatarios de los datos</h2>
+          <p>
+            Los datos personales no serán cedidos, vendidos ni comunicados a terceros, salvo en los siguientes supuestos:
+          </p>
+          <ul>
+            <li>Cuando exista una obligación legal que lo requiera.</li>
+            <li>Prestadores de servicios tecnológicos que actúen como encargados del tratamiento (p.ej. plataformas de envío de formularios), con quienes se suscriben los correspondientes acuerdos de encargo de tratamiento.</li>
+          </ul>
+          <p style="margin-top:0.75rem;">
+            No se realizan transferencias internacionales de datos fuera del Espacio Económico Europeo salvo que sea estrictamente necesario y con las garantías adecuadas conforme al RGPD.
+          </p>
+        </div>
 
-<h2 class="text-2xl font-bold mt-10 mb-4">Derechos del usuario</h2>
+        <div id="conservacion" class="legal-block">
+          <h2>Conservación de los datos</h2>
+          <p>
+            Los datos personales se conservarán durante el tiempo estrictamente necesario para cumplir con la
+            finalidad para la que fueron recogidos y, en todo caso, mientras dure la relación contractual o
+            comercial con el usuario.
+          </p>
+          <p>
+            Una vez concluida dicha relación, los datos se mantendrán bloqueados durante los plazos de prescripción
+            legal aplicables para atender posibles responsabilidades, tras lo cual serán eliminados de forma segura.
+          </p>
+        </div>
 
-<p class="text-gray-300 mb-6">
-El usuario puede ejercer sus derechos de acceso, rectificación,
-supresión, limitación y oposición al tratamiento de sus datos
-enviando una solicitud al correo electrónico:
-<strong>contacto@ateneaciberseguridad.com</strong>.
-</p>
+        <div id="derechos" class="legal-block">
+          <h2>Derechos del usuario</h2>
+          <p>
+            De conformidad con el RGPD y la LOPDGDD, el usuario puede ejercer en cualquier momento los siguientes derechos:
+          </p>
 
-<h2 class="text-2xl font-bold mt-10 mb-4">Seguridad de los datos</h2>
+          <div class="rights-grid">
+            <div class="right-item">
+              <strong>Acceso</strong>
+              <span>Obtener confirmación de si se están tratando sus datos y acceder a ellos.</span>
+            </div>
+            <div class="right-item">
+              <strong>Rectificación</strong>
+              <span>Solicitar la corrección de datos inexactos o incompletos.</span>
+            </div>
+            <div class="right-item">
+              <strong>Supresión</strong>
+              <span>Solicitar la eliminación de sus datos cuando ya no sean necesarios.</span>
+            </div>
+            <div class="right-item">
+              <strong>Limitación</strong>
+              <span>Solicitar la restricción del tratamiento en determinadas circunstancias.</span>
+            </div>
+            <div class="right-item">
+              <strong>Oposición</strong>
+              <span>Oponerse al tratamiento de sus datos en cualquier momento.</span>
+            </div>
+            <div class="right-item">
+              <strong>Portabilidad</strong>
+              <span>Recibir sus datos en un formato estructurado y de uso común.</span>
+            </div>
+          </div>
 
-<p class="text-gray-300">
-Atenea Ciberseguridad adopta las medidas técnicas y organizativas
-necesarias para garantizar la seguridad de los datos personales
-y evitar su alteración, pérdida o acceso no autorizado.
-</p>
+          <p style="margin-top:1.25rem;">
+            Para ejercer cualquiera de estos derechos, el usuario puede dirigirse a:
+          </p>
+          <div class="info-box">
+            <p>
+              <strong>Correo electrónico:</strong>
+              <a href="mailto:contacto@ateneaciberseguridad.com"
+                 style="color:rgba(232,230,224,0.5); transition:color 0.2s;"
+                 onmouseover="this.style.color='#fff'"
+                 onmouseout="this.style.color='rgba(232,230,224,0.5)'">
+                contacto@ateneaciberseguridad.com
+              </a><br>
+              Se deberá acompañar la solicitud de una copia del documento de identidad u otro medio que permita acreditar la identidad del solicitante.
+            </p>
+          </div>
+          <p>
+            Si considera que sus derechos no han sido debidamente atendidos, tiene derecho a presentar una reclamación
+            ante la Agencia Española de Protección de Datos (AEPD) en
+            <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer"
+               style="color:rgba(232,230,224,0.5); text-decoration:underline; transition:color 0.2s;"
+               onmouseover="this.style.color='#fff'"
+               onmouseout="this.style.color='rgba(232,230,224,0.5)'">
+              www.aepd.es
+            </a>.
+          </p>
+        </div>
 
-</div>
+        <div id="seguridad" class="legal-block">
+          <h2>Seguridad de los datos</h2>
+          <p>
+            Atenea Ciberseguridad adopta las medidas técnicas y organizativas necesarias para garantizar la
+            seguridad e integridad de los datos personales tratados, previniendo su alteración, pérdida,
+            tratamiento o acceso no autorizado.
+          </p>
+          <p>
+            En caso de producirse una violación de seguridad que pueda suponer un riesgo para los derechos
+            y libertades de los usuarios, se notificará a la autoridad de control competente y, cuando proceda,
+            a los propios interesados, conforme a los plazos establecidos en el RGPD.
+          </p>
+        </div>
+
+        <div id="cambios" class="legal-block">
+          <h2>Cambios en la política de privacidad</h2>
+          <p>
+            Atenea Ciberseguridad se reserva el derecho a modificar la presente política de privacidad para
+            adaptarla a novedades legislativas, jurisprudenciales o de práctica empresarial. Los cambios
+            significativos se comunicarán a los usuarios a través del sitio web.
+          </p>
+          <p>
+            Se recomienda revisar periódicamente esta página. La fecha de última actualización figura en el
+            encabezado del documento.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="py-12 relative z-10">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <a href="/" style="display:flex; align-items:center; gap:8px; text-decoration:none; margin-bottom:0.75rem;">
+          <img src="/assets/logo.png" alt="" aria-hidden="true" style="height:28px; width:auto; opacity:0.85;">
+          <span style="font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:800; color:#fff;">
+            <span style="color:var(--granate)">Atenea</span> Ciberseguridad
+          </span>
+        </a>
+        <p style="font-size:0.83rem; color:rgba(232,230,224,0.35); line-height:1.65; font-weight:300;">
+          Empresa especializada en seguridad ofensiva, auditorías técnicas y consultoría de ciberseguridad.
+        </p>
+      </div>
+      <div>
+        <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.3); margin-bottom:0.8rem; font-weight:600;">Servicios</p>
+        <div class="flex flex-col gap-2">
+          <a href="/auditorias/" style="font-size:0.85rem;">Pentesting</a>
+          <a href="/auditorias/" style="font-size:0.85rem;">Auditorías técnicas</a>
+          <a href="/auditorias/" style="font-size:0.85rem;">SOC & Monitorización</a>
+          <a href="/auditorias/" style="font-size:0.85rem;">Consultoría normativa</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.3); margin-bottom:0.8rem; font-weight:600;">Contacto</p>
+        <a href="mailto:contacto@ateneaciberseguridad.com" style="font-size:0.85rem;">
+          contacto@ateneaciberseguridad.com
+        </a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem;">
+      <p style="font-size:0.8rem; color:rgba(232,230,224,0.25);">© 2026 Atenea Ciberseguridad</p>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="/aviso-legal.html"         style="font-size:0.8rem;">Aviso legal</a>
+        <a href="/politica-privacidad.html" style="font-size:0.8rem; color:#fff !important;">Privacidad</a>
+        <a href="/politica-cookies.html"    style="font-size:0.8rem;">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- COOKIES -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function () {
+  if (window.cookieconsent) {
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: "#0f0f18", text: "#b0aea8" },
+        button: { background: "#7a0019", text: "#ffffff" }
+      },
+      theme: "classic", position: "bottom", type: "opt-in",
+      content: {
+        message: "Esta web utiliza cookies para mejorar la experiencia.",
+        allow: "Aceptar", deny: "Rechazar",
+        link: "Política de cookies", href: "/politica-cookies.html"
+      }
+    });
+  }
+});
+</script>
 
 </body>
-
 </html>
