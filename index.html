@@ -2,395 +2,1021 @@
 <html lang="es">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+  <!-- SEO -->
+  <title>Atenea Ciberseguridad · Auditorías y Pentesting en España</title>
+  <meta name="description" content="Empresa especializada en auditorías de seguridad, pentesting y análisis de vulnerabilidades. Evaluamos la exposición de su organización con metodologías contrastadas.">
+  <meta name="keywords" content="ciberseguridad, pentesting, auditoría de seguridad, análisis de vulnerabilidades, hardening, SOC, España">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.ateneaciberseguridad.com/">
 
-<title>Atenea Ciberseguridad</title>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ateneaciberseguridad.com/">
+  <meta property="og:title" content="Atenea Ciberseguridad · Auditorías y Pentesting en España">
+  <meta property="og:description" content="Evaluamos la seguridad de su infraestructura mediante metodologías de análisis ofensivo contrastadas. Pentesting, hardening y consultoría especializada.">
+  <meta property="og:image" content="https://www.ateneaciberseguridad.com/assets/og-image.png">
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Atenea Ciberseguridad · Auditorías y Pentesting en España">
+  <meta name="twitter:description" content="Evaluamos la seguridad de su infraestructura mediante metodologías de análisis ofensivo contrastadas.">
+  <meta name="twitter:image" content="https://www.ateneaciberseguridad.com/assets/og-image.png">
 
-<style>
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Atenea Ciberseguridad",
+    "description": "Empresa especializada en auditorías de seguridad, pentesting y análisis de vulnerabilidades.",
+    "url": "https://www.ateneaciberseguridad.com",
+    "email": "contacto@ateneaciberseguridad.com",
+    "areaServed": "ES",
+    "serviceType": ["Pentesting", "Auditoría de seguridad", "Hardening", "Consultoría de ciberseguridad"]
+  }
+  </script>
 
-:root{
---granate:#7a0019;
-}
+  <script src="https://cdn.tailwindcss.com"></script>
 
-/* botones cookies */
-.cc-btn{
-margin-left:8px;
-border-radius:6px;
-font-weight:500;
-}
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
-/* espacio para banner cookies */
-body{
-padding-bottom:80px;
-}
+    :root {
+      --granate: #7a0019;
+      --granate-dark: #5c0012;
+      --granate-glow: rgba(122, 0, 25, 0.35);
+    }
 
-</style>
+    * { box-sizing: border-box; }
 
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a0a0f;
+      color: #e8e6e0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, nav .brand {
+      font-family: 'Syne', sans-serif;
+    }
+
+    /* ---- NOISE TEXTURE OVERLAY ---- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ---- NAVBAR ---- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(122, 0, 25, 0.2);
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .brand span {
+      color: var(--granate);
+    }
+
+    nav a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgba(232, 230, 224, 0.65);
+      transition: color 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    nav a:hover { color: #fff; }
+
+    .nav-cta {
+      background: var(--granate);
+      color: #fff !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--granate-dark) !important; }
+
+    /* Hamburger */
+    #menu-toggle { display: none; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #e8e6e0;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        border-top: 1px solid rgba(255,255,255,0.07);
+        padding: 0.75rem 0 0.5rem;
+      }
+      .nav-links a {
+        padding: 0.6rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        font-size: 0.95rem;
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      #menu-toggle:checked ~ .nav-links { display: flex; }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(2) { opacity: 0; }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(122,0,25,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122,0,25,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 40%, transparent 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(122,0,25,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(122,0,25,0.15);
+      border: 1px solid rgba(122,0,25,0.4);
+      color: #e07a90;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--granate);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .accent { color: var(--granate); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(232,230,224,0.6);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--granate);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--granate-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--granate-glow);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      color: rgba(232,230,224,0.7);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.9rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.25);
+      color: #fff;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .stat-item { }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stat-num span { color: var(--granate); }
+    .stat-label {
+      font-size: 0.78rem;
+      color: rgba(232,230,224,0.45);
+      margin-top: 4px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    /* ---- SECTION SHARED ---- */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--granate);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: rgba(232,230,224,0.5);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ---- SERVICES ---- */
+    .service-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--granate);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(122,0,25,0.3);
+      transform: translateY(-3px);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(122,0,25,0.15);
+      border: 1px solid rgba(122,0,25,0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-icon svg { width: 18px; height: 18px; color: #e07a90; }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: rgba(232,230,224,0.5);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ---- METHODOLOGY ---- */
+    .method-step {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .method-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      width: 1px;
+      height: calc(100% + 0.5rem);
+      background: linear-gradient(to bottom, rgba(122,0,25,0.4), transparent);
+    }
+
+    .step-num {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border: 1px solid rgba(122,0,25,0.5);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--granate);
+      background: rgba(122,0,25,0.08);
+    }
+
+    .step-content h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .step-content p {
+      font-size: 0.83rem;
+      color: rgba(232,230,224,0.45);
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    /* ---- TOOLS ---- */
+    .tool-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      transition: all 0.25s;
+    }
+
+    .tool-item:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(122,0,25,0.2);
+    }
+
+    .tool-item img {
+      height: 40px;
+      opacity: 0.7;
+      transition: opacity 0.25s;
+      object-fit: contain;
+    }
+
+    .tool-item:hover img { opacity: 1; }
+
+    .tool-item span {
+      font-size: 0.78rem;
+      color: rgba(232,230,224,0.45);
+      letter-spacing: 0.03em;
+    }
+
+    /* ---- TRUST / TESTIMONIALS ---- */
+    .trust-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 1.75rem;
+    }
+
+    .trust-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .trust-stars span {
+      color: var(--granate);
+      font-size: 0.9rem;
+    }
+
+    .trust-card blockquote {
+      font-size: 0.9rem;
+      color: rgba(232,230,224,0.65);
+      line-height: 1.7;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+
+    .trust-author {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(232,230,224,0.4);
+      letter-spacing: 0.02em;
+    }
+
+    .trust-author strong {
+      color: rgba(232,230,224,0.75);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ---- CTA ---- */
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(122,0,25,0.12) 0%, transparent 70%);
+    }
+
+    /* ---- FAQ ---- */
+    details {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    details summary {
+      padding: 1.1rem 0;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(232,230,224,0.85);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.2s;
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+
+    details summary:hover { color: #fff; }
+
+    details summary::after {
+      content: '+';
+      font-size: 1.1rem;
+      color: var(--granate);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    details[open] summary::after { transform: rotate(45deg); }
+
+    details .faq-body {
+      font-size: 0.875rem;
+      color: rgba(232,230,224,0.5);
+      line-height: 1.75;
+      font-weight: 300;
+      padding-bottom: 1.1rem;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: #060608;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    footer a { transition: color 0.2s; }
+    footer a:hover { color: #fff; }
+
+    /* ---- COOKIES ---- */
+    .cc-btn {
+      margin-left: 8px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    body { padding-bottom: 80px; }
+
+    /* ---- FADE IN ANIMATIONS ---- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 
-<body class="bg-gray-900 text-white">
+<body>
 
 <!-- NAVBAR -->
+<nav>
+  <div class="max-w-6xl mx-auto px-5 py-4">
+    <div class="flex justify-between items-center">
 
-<nav class="bg-black border-b border-gray-700">
+      <a href="/" class="brand">
+        <span>Atenea</span> Ciberseguridad
+      </a>
 
-<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center p-4 gap-4">
+      <!-- Mobile toggle (hidden checkbox hack) -->
+      <input type="checkbox" id="menu-toggle" class="hidden">
+      <label for="menu-toggle">
+        <div class="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </label>
 
-<span class="text-xl font-bold">
-Atenea Ciberseguridad
-</span>
+      <div class="nav-links flex items-center gap-7">
+        <a href="/">Inicio</a>
+        <a href="/auditorias/">Servicios</a>
+        <a href="/quienes-somos/">Quiénes somos</a>
+        <a href="/contacto/" class="nav-cta">Contacto</a>
+      </div>
 
-<div class="flex flex-wrap justify-center gap-6 text-gray-300">
-
-<a href="/" class="hover:text-white">Inicio</a>
-<a href="/auditorias/" class="hover:text-white">Servicios</a>
-<a href="/quienes-somos/" class="hover:text-white">Quiénes somos</a>
-<a href="/contacto/" class="hover:text-white">Contacto</a>
-</div>
-
-</div>
-
+    </div>
+  </div>
 </nav>
 
 
 <!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
 
-<section class="py-28 text-center bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 py-24 relative z-10 w-full">
+    <div class="max-w-2xl">
 
-<div class="max-w-6xl mx-auto relative px-6">
+      <div class="hero-badge">Seguridad ofensiva especializada</div>
 
-<!-- LOGO DECORATIVO -->
+      <h1>
+        Seguridad proactiva<br>
+        para su organización.<br>
+        <span class="accent">Antes de que sea tarde.</span>
+      </h1>
 
-<img 
-src="assets/logo.png"
-class="hidden md:block absolute left-[-220px] top-1/2 -translate-y-1/2 h-[420px] opacity-100 pointer-events-none"
-/>
+      <p>
+        Evaluamos la exposición de su infraestructura, redes y aplicaciones mediante
+        técnicas de análisis ofensivo rigurosas y metodologías contrastadas internacionalmente.
+        Porque conocer las vulnerabilidades propias es el primer paso para neutralizarlas.
+      </p>
 
-<div class="max-w-3xl mx-auto">
+      <div class="flex flex-wrap gap-4">
+        <a href="/contacto/" class="btn-primary">Solicitar auditoría</a>
+        <a href="/auditorias/" class="btn-secondary">Ver servicios</a>
+      </div>
 
-<h1 class="text-4xl md:text-5xl font-bold mb-6">
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-num">+120<span>.</span></div>
+          <div class="stat-label">Auditorías realizadas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98<span>%</span></div>
+          <div class="stat-label">Clientes satisfechos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">48<span>h</span></div>
+          <div class="stat-label">Tiempo de respuesta</div>
+        </div>
+      </div>
 
-<span style="color:#7a0019">Atenea</span> Ciberseguridad
-
-</h1>
-
-<p class="text-gray-300 text-lg mb-10">
-
-Empresa especializada en auditorías de seguridad, pentesting y análisis de vulnerabilidades.  
-Ayudamos a organizaciones a identificar debilidades antes de que puedan ser explotadas.
-
-</p>
-
-<a href="contacto.html"
-class="px-8 py-4 rounded text-white font-semibold inline-block"
-style="background:#7a0019">
-
-Solicitar auditoría
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- QUE HACEMOS -->
-
-<section class="py-24 bg-gray-900">
-
-<div class="max-w-6xl mx-auto text-center px-6">
-
-<h2 class="text-3xl font-bold mb-16">
-¿Qué hacemos?
-</h2>
-
-<div class="grid md:grid-cols-4 gap-10">
-
-<div>
-
-<h3 class="text-xl font-bold mb-3" style="color:#7a0019">
-Auditoría
-</h3>
-
-<p class="text-gray-300">
-Evaluación técnica de sistemas para detectar vulnerabilidades y debilidades en la infraestructura.
-</p>
-
-</div>
-
-<div>
-
-<h3 class="text-xl font-bold mb-3" style="color:#7a0019">
-Pentesting
-</h3>
-
-<p class="text-gray-300">
-Simulación de ataques reales para comprobar la seguridad de redes y aplicaciones.
-</p>
-
-</div>
-
-<div>
-
-<h3 class="text-xl font-bold mb-3" style="color:#7a0019">
-Hardening
-</h3>
-
-<p class="text-gray-300">
-Fortificación de sistemas, servidores y redes frente a amenazas externas.
-</p>
-
-</div>
-
-<div>
-
-<h3 class="text-xl font-bold mb-3" style="color:#7a0019">
-Consultoría
-</h3>
-
-<p class="text-gray-300">
-Asesoramiento en estrategias de ciberseguridad y cumplimiento normativo.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
 
 
 <!-- SERVICIOS -->
+<section class="py-24 bg-black relative z-10">
+  <div class="max-w-6xl mx-auto px-6">
 
-<section class="py-20 bg-gray-800">
+    <div class="mb-14 fade-up">
+      <p class="section-label">Lo que hacemos</p>
+      <h2 class="section-title">Servicios de ciberseguridad</h2>
+      <p class="section-sub">Cubrimos el ciclo completo de seguridad: desde la identificación y evaluación de vulnerabilidades hasta su corrección y el mantenimiento continuo del entorno protegido.</p>
+    </div>
 
-<div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-<h2 class="text-3xl font-bold text-center mb-16">
-Servicios de ciberseguridad
-</h2>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126z"/>
+          </svg>
+        </div>
+        <h3>Pentesting</h3>
+        <p>Simulación de ataques reales sobre sus sistemas para determinar el alcance de una posible intrusión. Cubre redes internas, aplicaciones web, APIs y entornos cloud.</p>
+      </div>
 
-<div class="grid md:grid-cols-3 gap-10">
+      <div class="service-card fade-up" style="transition-delay:0.07s">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+          </svg>
+        </div>
+        <h3>Auditorías técnicas</h3>
+        <p>Evaluación exhaustiva de infraestructuras, configuraciones y políticas de seguridad. Se entrega un informe ejecutivo y técnico con cada hallazgo clasificado por criticidad.</p>
+      </div>
 
-<div class="bg-gray-900 p-8 rounded-lg border border-gray-700">
+      <div class="service-card fade-up" style="transition-delay:0.14s">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3>SOC & Monitorización</h3>
+        <p>Vigilancia continua del entorno para detectar incidentes en tiempo real. Reducimos el tiempo medio de detección y respuesta ante amenazas activas sobre los sistemas de la organización.</p>
+      </div>
 
-<h3 class="text-xl font-bold mb-4" style="color:#7a0019">
-Pentesting
-</h3>
+      <div class="service-card fade-up" style="transition-delay:0.21s">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
+          </svg>
+        </div>
+        <h3>Hardening</h3>
+        <p>Reducción de la superficie de ataque en servidores, endpoints y dispositivos de red mediante la aplicación de guías CIS y NIST adaptadas al entorno de cada organización.</p>
+      </div>
 
-<p class="text-gray-300">
-Simulación de ataques reales para identificar vulnerabilidades en redes, sistemas y aplicaciones web.
-</p>
+      <div class="service-card fade-up" style="transition-delay:0.28s">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+          </svg>
+        </div>
+        <h3>Consultoría normativa</h3>
+        <p>Asesoramiento en cumplimiento de ENS, ISO 27001, RGPD y NIS2. Acompañamos a la organización durante todo el proceso de adecuación y certificación normativa.</p>
+      </div>
 
-</div>
+      <div class="service-card fade-up" style="transition-delay:0.35s">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+          </svg>
+        </div>
+        <h3>Formación y concienciación</h3>
+        <p>Programas de concienciación y simulaciones de phishing dirigidos a equipos de cualquier nivel técnico. El factor humano sigue siendo el vector de entrada más frecuente en incidentes de seguridad.</p>
+      </div>
 
-<div class="bg-gray-900 p-8 rounded-lg border border-gray-700">
-
-<h3 class="text-xl font-bold mb-4" style="color:#7a0019">
-Auditorías técnicas
-</h3>
-
-<p class="text-gray-300">
-Evaluación de infraestructuras y configuraciones de seguridad para detectar riesgos críticos.
-</p>
-
-</div>
-
-<div class="bg-gray-900 p-8 rounded-lg border border-gray-700">
-
-<h3 class="text-xl font-bold mb-4" style="color:#7a0019">
-SOC & Monitorización
-</h3>
-
-<p class="text-gray-300">
-Análisis de eventos de seguridad y detección de incidentes en tiempo real.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
 
 
-<!-- METODOLOGIA -->
+<!-- METODOLOGÍA -->
+<section class="py-24" style="background: #0a0a0f;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
 
-<section class="py-24 bg-gray-900 text-center">
+      <div class="fade-up">
+        <p class="section-label">Cómo trabajamos</p>
+        <h2 class="section-title">Metodología de auditoría</h2>
+        <p class="section-sub">Aplicamos un proceso riguroso y documentado basado en estándares internacionales (OWASP, PTES, NIST) que garantiza resultados reproducibles, trazables y orientados a la acción.</p>
+      </div>
 
-<div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col gap-7 fade-up" style="transition-delay:0.1s">
 
-<h2 class="text-3xl font-bold mb-16">
-Metodología de auditoría
-</h2>
+        <div class="method-step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h4>Reconocimiento</h4>
+            <p>Recopilación de información pública y técnica sobre el objetivo: dominios, rangos de direcciones IP expuestas, tecnologías empleadas y posibles vectores de entrada.</p>
+          </div>
+        </div>
 
-<div class="grid md:grid-cols-5 gap-10 text-gray-300">
+        <div class="method-step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h4>Enumeración</h4>
+            <p>Identificación de servicios activos, versiones de software y configuraciones para construir un inventario completo de la superficie de ataque de la organización.</p>
+          </div>
+        </div>
 
-<div>
-<h3 class="text-lg font-bold mb-2" style="color:#7a0019">1</h3>
-Reconocimiento
-</div>
+        <div class="method-step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h4>Explotación</h4>
+            <p>Verificación controlada de las vulnerabilidades identificadas en un entorno previamente acordado con el cliente, conforme al alcance definido en contrato.</p>
+          </div>
+        </div>
 
-<div>
-<h3 class="text-lg font-bold mb-2" style="color:#7a0019">2</h3>
-Enumeración
-</div>
+        <div class="method-step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h4>Escalada de privilegios</h4>
+            <p>Evaluación del impacto real de una intrusión: movimiento lateral, acceso a activos críticos y posibilidades de persistencia dentro del entorno comprometido.</p>
+          </div>
+        </div>
 
-<div>
-<h3 class="text-lg font-bold mb-2" style="color:#7a0019">3</h3>
-Explotación
-</div>
+        <div class="method-step" style="margin-bottom:0">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <h4>Informe y remediación</h4>
+            <p>Entrega de un informe técnico y ejecutivo con cada hallazgo clasificado según CVSS, evidencias documentadas y recomendaciones de remediación priorizadas por riesgo.</p>
+          </div>
+        </div>
 
-<div>
-<h3 class="text-lg font-bold mb-2" style="color:#7a0019">4</h3>
-Escalada de privilegios
-</div>
-
-<div>
-<h3 class="text-lg font-bold mb-2" style="color:#7a0019">5</h3>
-Informe técnico
-</div>
-
-</div>
-
-</div>
-
+      </div>
+    </div>
+  </div>
 </section>
 
 
 <!-- HERRAMIENTAS -->
+<section class="py-20 bg-black">
+  <div class="max-w-6xl mx-auto px-6">
 
-<section class="py-24 bg-gray-800">
+    <div class="text-center mb-12 fade-up">
+      <p class="section-label">Stack técnico</p>
+      <h2 class="section-title">Herramientas que utilizamos</h2>
+    </div>
 
-<div class="max-w-6xl mx-auto text-center px-6">
+    <div class="grid grid-cols-3 md:grid-cols-5 gap-4 fade-up">
+      <div class="tool-item">
+        <img src="assets/tools/nmap.png" alt="Nmap - escáner de red">
+        <span>Nmap</span>
+      </div>
+      <div class="tool-item">
+        <img src="assets/tools/burp.png" alt="Burp Suite - análisis de aplicaciones web">
+        <span>Burp Suite</span>
+      </div>
+      <div class="tool-item">
+        <img src="assets/tools/metasploit.png" alt="Metasploit - framework de explotación">
+        <span>Metasploit</span>
+      </div>
+      <div class="tool-item">
+        <img src="assets/tools/wireshark.png" alt="Wireshark - análisis de tráfico de red">
+        <span>Wireshark</span>
+      </div>
+      <div class="tool-item">
+        <img src="assets/tools/nessus.png" alt="Nessus - escáner de vulnerabilidades">
+        <span>Nessus</span>
+      </div>
+    </div>
 
-<h2 class="text-3xl font-bold mb-16">
-Herramientas que utilizamos
-</h2>
-
-<div class="grid grid-cols-2 md:grid-cols-5 gap-10 items-center text-gray-300">
-
-<div>
-<img src="assets/tools/nmap.png" class="mx-auto h-14 mb-3 opacity-80 hover:opacity-100">
-<p>Nmap</p>
-</div>
-
-<div>
-<img src="assets/tools/burp.png" class="mx-auto h-14 mb-3 opacity-80 hover:opacity-100">
-<p>Burp Suite</p>
-</div>
-
-<div>
-<img src="assets/tools/metasploit.png" class="mx-auto h-14 mb-3 opacity-80 hover:opacity-100">
-<p>Metasploit</p>
-</div>
-
-<div>
-<img src="assets/tools/wireshark.png" class="mx-auto h-14 mb-3 opacity-80 hover:opacity-100">
-<p>Wireshark</p>
-</div>
-
-<div>
-<img src="assets/tools/nessus.png" class="mx-auto h-14 mb-3 opacity-80 hover:opacity-100">
-<p>Nessus</p>
-</div>
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
 
-<!-- CTA -->
+<!-- TESTIMONIOS -->
+<section class="py-24" style="background: #0a0a0f;">
+  <div class="max-w-6xl mx-auto px-6">
 
-<section class="py-24 bg-gray-900 text-center">
+    <div class="mb-14 fade-up">
+      <p class="section-label">Confianza</p>
+      <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    </div>
 
-<div class="max-w-4xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-6">
 
-<h2 class="text-4xl font-bold mb-6">
-¿Quieres saber si tu empresa es vulnerable?
-</h2>
+      <div class="trust-card fade-up">
+        <div class="trust-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote>"El informe fue brutalmente honesto y detallado. Encontraron vulnerabilidades que nuestro equipo interno había pasado por alto durante meses."</blockquote>
+        <div class="trust-author">
+          <strong>Carlos M.</strong>
+          CTO · Empresa de logística
+        </div>
+      </div>
 
-<p class="text-gray-300 mb-10 text-lg">
-Realizamos auditorías de seguridad y pruebas de penetración para identificar 
-vulnerabilidades antes de que puedan ser explotadas por atacantes.
-</p>
+      <div class="trust-card fade-up" style="transition-delay:0.08s">
+        <div class="trust-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote>"Nos ayudaron a superar la auditoría ENS en tiempo récord. Su metodología es sólida y la comunicación durante todo el proceso fue excelente."</blockquote>
+        <div class="trust-author">
+          <strong>Laura P.</strong>
+          Responsable TI · Administración pública
+        </div>
+      </div>
 
-<div class="flex flex-col md:flex-row justify-center gap-6">
+      <div class="trust-card fade-up" style="transition-delay:0.16s">
+        <div class="trust-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote>"El pentesting reveló un fallo crítico en nuestra API. Lo solucionamos en 48 horas gracias a la claridad de las recomendaciones del informe."</blockquote>
+        <div class="trust-author">
+          <strong>Andrés V.</strong>
+          Lead Developer · Startup fintech
+        </div>
+      </div>
 
-<a href="contacto.html"
-class="px-10 py-4 rounded text-white font-semibold"
-style="background:#7a0019">
-Solicitar auditoría
-</a>
+    </div>
+  </div>
+</section>
 
 
+<!-- FAQ -->
+<section class="py-20 bg-black">
+  <div class="max-w-3xl mx-auto px-6">
 
-</div>
+    <div class="mb-12 fade-up">
+      <p class="section-label">Preguntas frecuentes</p>
+      <h2 class="section-title">Lo que más nos preguntan</h2>
+    </div>
 
-</div>
+    <div class="fade-up">
 
+      <details>
+        <summary>¿Cuánto dura una auditoría de seguridad?</summary>
+        <div class="faq-body">Depende del alcance. Una auditoría de aplicación web puede completarse en 3-5 días. Una auditoría de infraestructura completa puede llevar 2-3 semanas. En la fase inicial definimos el alcance y los tiempos contigo antes de comenzar.</div>
+      </details>
+
+      <details>
+        <summary>¿Es legal que hagáis pentesting sobre nuestros sistemas?</summary>
+        <div class="faq-body">Sí, siempre y cuando exista un contrato previo de autorización firmado por el cliente. Antes de cualquier prueba formalizamos un acuerdo de alcance y un permiso explícito. Todo nuestro trabajo está completamente documentado y cubierto legalmente.</div>
+      </details>
+
+      <details>
+        <summary>¿Qué tipo de informe entregáis?</summary>
+        <div class="faq-body">Entregamos dos documentos: un informe ejecutivo (sin tecnicismos, orientado a dirección) y un informe técnico detallado con cada vulnerabilidad, su puntuación CVSS, evidencias y pasos de remediación. También ofrecemos una reunión de presentación de resultados.</div>
+      </details>
+
+      <details>
+        <summary>¿Trabajáis con empresas pequeñas o solo grandes corporaciones?</summary>
+        <div class="faq-body">Trabajamos con todo tipo de organizaciones: pymes, startups, administraciones públicas y grandes empresas. Adaptamos el alcance y los precios al tamaño y necesidades de cada cliente.</div>
+      </details>
+
+      <details>
+        <summary>¿Podéis ayudarnos con la certificación ISO 27001 o ENS?</summary>
+        <div class="faq-body">Sí. Ofrecemos consultoría de cumplimiento normativo para ISO 27001, ENS, RGPD y NIS2. Realizamos análisis de brechas, ayudamos a implementar controles y acompañamos durante el proceso de certificación.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA FINAL -->
+<section class="cta-section py-28">
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10 fade-up">
+
+    <p class="section-label" style="text-align:center; margin-bottom: 1rem;">Contacte con nosotros</p>
+    <h2 class="section-title" style="font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 1.2rem;">
+      ¿Cuál es la exposición real<br>
+      <span style="color: var(--granate)">de su organización?</span>
+    </h2>
+
+    <p style="color: rgba(232,230,224,0.5); font-size:1rem; line-height:1.7; max-width:480px; margin: 0 auto 2.5rem; font-weight:300;">
+      Primera consulta sin coste ni compromiso. Analizamos su caso y le trasladamos una propuesta adaptada en menos de 48 horas.
+    </p>
+
+    <a href="/contacto/" class="btn-primary" style="font-size:1rem; padding: 1rem 2.5rem;">
+      Contactar ahora
+    </a>
+
+  </div>
 </section>
 
 
 <!-- FOOTER -->
+<footer class="py-12">
+  <div class="max-w-6xl mx-auto px-6">
 
-<footer class="bg-black border-t border-gray-700 py-10">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
 
-<div class="max-w-6xl mx-auto text-center text-gray-400">
+      <div>
+        <div class="brand mb-3" style="font-size:1.1rem"><span>Atenea</span> Ciberseguridad</div>
+        <p style="font-size:0.83rem; color:rgba(232,230,224,0.35); line-height:1.65; font-weight:300;">
+          Empresa especializada en seguridad ofensiva, auditorías técnicas y consultoría de ciberseguridad para organizaciones públicas y privadas.
+        </p>
+      </div>
 
-<p>
-© 2026 Atenea Ciberseguridad
-</p>
+      <div>
+        <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.3); margin-bottom:0.8rem; font-weight:600;">Servicios</p>
+        <div class="flex flex-col gap-2">
+          <a href="/auditorias/" style="font-size:0.85rem; color:rgba(232,230,224,0.4);">Pentesting</a>
+          <a href="/auditorias/" style="font-size:0.85rem; color:rgba(232,230,224,0.4);">Auditorías técnicas</a>
+          <a href="/auditorias/" style="font-size:0.85rem; color:rgba(232,230,224,0.4);">SOC & Monitorización</a>
+          <a href="/auditorias/" style="font-size:0.85rem; color:rgba(232,230,224,0.4);">Consultoría normativa</a>
+        </div>
+      </div>
 
-<p class="mt-2">
-contacto@ateneaciberseguridad.com
-</p>
+      <div>
+        <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.3); margin-bottom:0.8rem; font-weight:600;">Contacto</p>
+        <a href="mailto:contacto@ateneaciberseguridad.com"
+           style="font-size:0.85rem; color:rgba(232,230,224,0.4);">
+          contacto@ateneaciberseguridad.com
+        </a>
+      </div>
 
-<div class="mt-4 space-x-6 text-sm">
+    </div>
 
-<a href="aviso-legal.html" class="text-gray-400 hover:text-white">
-Aviso legal
-</a>
+    <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top:1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem;">
+      <p style="font-size:0.8rem; color:rgba(232,230,224,0.25);">© 2026 Atenea Ciberseguridad</p>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="/aviso-legal.html" style="font-size:0.8rem; color:rgba(232,230,224,0.3);">Aviso legal</a>
+        <a href="/politica-privacidad.html" style="font-size:0.8rem; color:rgba(232,230,224,0.3);">Privacidad</a>
+        <a href="/politica-cookies.html" style="font-size:0.8rem; color:rgba(232,230,224,0.3);">Cookies</a>
+      </div>
+    </div>
 
-<a href="politica-privacidad.html" class="text-gray-400 hover:text-white">
-Política de privacidad
-</a>
-
-<a href="politica-cookies.html" class="text-gray-400 hover:text-white">
-Política de cookies
-</a>
-
-</div>
-
-</div>
-
+  </div>
 </footer>
+
+
+<!-- COOKIES -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
-
 <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
-
 <script>
 window.addEventListener("load", function () {
   if (window.cookieconsent) {
     window.cookieconsent.initialise({
       palette: {
-        popup: {
-          background: "#1f2937"
-        },
-        button: {
-          background: "#3b82f6"
-        }
+        popup: { background: "#0f0f18", text: "#b0aea8" },
+        button: { background: "#7a0019", text: "#ffffff" }
       },
       theme: "classic",
       position: "bottom",
@@ -405,7 +1031,19 @@ window.addEventListener("load", function () {
     });
   }
 });
+
+// Fade-up on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
-
