@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+  <title>Blog · Noticias y Vulnerabilidades · Atenea Ciberseguridad</title>
+  <meta name="description" content="Noticias, vulnerabilidades recientes y análisis de seguridad del equipo de Atenea Ciberseguridad. Mantente al día de las últimas amenazas.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.ateneaciberseguridad.com/blog/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ateneaciberseguridad.com/blog/">
+  <meta property="og:title" content="Blog · Noticias y Vulnerabilidades · Atenea Ciberseguridad">
+  <meta property="og:description" content="Análisis de vulnerabilidades recientes, noticias de seguridad y alertas del equipo de Atenea Ciberseguridad.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+    :root {
+      --granate: #7a0019;
+      --granate-dark: #5c0012;
+      --granate-glow: rgba(122, 0, 25, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a0a0f;
+      color: #e8e6e0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand { font-family: 'Syne', sans-serif; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ---- NAVBAR ---- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(122, 0, 25, 0.2);
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand span { color: var(--granate); }
+
+    nav a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgba(232, 230, 224, 0.65);
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+
+    nav a:hover { color: #fff; }
+
+    .nav-cta {
+      background: var(--granate);
+      color: #fff !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--granate-dark) !important; }
+
+    #menu-toggle { display: none; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #e8e6e0; border-radius: 2px; transition: all 0.25s; }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; flex-direction: column; gap: 0; width: 100%; border-top: 1px solid rgba(255,255,255,0.07); padding: 0.75rem 0 0.5rem; }
+      .nav-links a { padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; }
+      .nav-links a:last-child { border-bottom: none; }
+      #menu-toggle:checked ~ .nav-links { display: flex; }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(2) { opacity: 0; }
+      #menu-toggle:checked ~ label .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+
+    /* ---- HERO ---- */
+    .page-hero {
+      position: relative;
+      padding: 5rem 0 3.5rem;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(122,0,25,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122,0,25,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 30%, transparent 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(122,0,25,0.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--granate);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ---- SEVERITY BADGES ---- */
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .badge-critical { background: rgba(226,75,74,0.15);  border: 1px solid rgba(226,75,74,0.35);  color: #f87171; }
+    .badge-high     { background: rgba(239,159,39,0.15); border: 1px solid rgba(239,159,39,0.35); color: #fbbf24; }
+    .badge-medium   { background: rgba(122,0,25,0.15);   border: 1px solid rgba(122,0,25,0.35);   color: #e07a90; }
+    .badge-news     { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(232,230,224,0.45); }
+    .badge-alert    { background: rgba(226,75,74,0.1);   border: 1px solid rgba(226,75,74,0.25);  color: #f87171; }
+
+    /* ---- FEATURED CARD ---- */
+    .card-featured {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(122,0,25,0.25);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      display: grid;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .card-featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--granate);
+    }
+
+    .card-featured:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(122,0,25,0.5);
+      transform: translateY(-2px);
+    }
+
+    @media (min-width: 768px) {
+      .card-featured { grid-template-columns: 1fr 1fr; }
+    }
+
+    .card-featured-img {
+      background: rgba(122,0,25,0.08);
+      border-right: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-featured-img .mock-terminal {
+      font-family: monospace;
+      font-size: 0.72rem;
+      line-height: 1.8;
+      color: rgba(232,230,224,0.4);
+      padding: 1.5rem;
+      width: 100%;
+    }
+
+    .card-featured-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    /* ---- ARTICLE CARDS ---- */
+    .article-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 1.75rem;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--granate);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .article-card:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(122,0,25,0.3);
+      transform: translateY(-2px);
+    }
+
+    .article-card:hover::before { transform: scaleX(1); }
+
+    .article-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+      transition: color 0.2s;
+    }
+
+    .article-card:hover h3 { color: #fff; }
+
+    .article-card p {
+      font-size: 0.855rem;
+      color: rgba(232,230,224,0.45);
+      line-height: 1.65;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-date {
+      font-size: 0.75rem;
+      color: rgba(232,230,224,0.25);
+      font-weight: 300;
+    }
+
+    /* ---- SIDEBAR ---- */
+    .sidebar-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .sidebar-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(232,230,224,0.3);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .sidebar-link:last-child { border-bottom: none; }
+
+    .sidebar-link:hover h4 { color: #fff; }
+
+    .sidebar-link h4 {
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: rgba(232,230,224,0.55);
+      line-height: 1.4;
+      transition: color 0.2s;
+    }
+
+    .sidebar-link span {
+      font-size: 0.72rem;
+      color: rgba(232,230,224,0.25);
+      font-weight: 300;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    /* ---- CVE TAG ---- */
+    .cve-tag {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: rgba(232,230,224,0.35);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 1px 7px;
+      border-radius: 4px;
+    }
+
+    /* ---- FILTER TABS ---- */
+    .filter-tab {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(232,230,224,0.4);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: none;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: rgba(122,0,25,0.12);
+      border-color: rgba(122,0,25,0.35);
+      color: #e07a90;
+    }
+
+    /* ---- CTA INLINE ---- */
+    .cta-inline {
+      background: rgba(122,0,25,0.07);
+      border: 1px solid rgba(122,0,25,0.2);
+      border-radius: 10px;
+      padding: 1.75rem;
+      text-align: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--granate);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--granate-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--granate-glow);
+    }
+
+    /* ---- FOOTER ---- */
+    footer { background: #060608; border-top: 1px solid rgba(255,255,255,0.06); }
+    footer a { color: rgba(232,230,224,0.3); transition: color 0.2s; text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .cc-btn { margin-left: 8px; border-radius: 6px; font-weight: 500; }
+    body { padding-bottom: 80px; }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="max-w-6xl mx-auto px-5 py-4">
+    <div class="flex justify-between items-center">
+      <a href="/" class="brand">
+        <img src="/assets/logo.png" alt="Atenea Ciberseguridad" style="height:34px; width:auto;">
+        <span><span>Atenea</span> Ciberseguridad</span>
+      </a>
+      <input type="checkbox" id="menu-toggle" class="hidden">
+      <label for="menu-toggle">
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </label>
+      <div class="nav-links flex items-center gap-7">
+        <a href="/">Inicio</a>
+        <a href="/auditorias/">Servicios</a>
+        <a href="/quienes-somos/">Quiénes somos</a>
+        <a href="/blog/" style="color:#fff;">Blog</a>
+        <a href="/contacto/" class="nav-cta">Contacto</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <p class="page-label">Noticias y vulnerabilidades</p>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.5rem); font-weight:800; letter-spacing:-0.03em; color:#fff; line-height:1.05; margin-bottom:1rem;">
+      Blog de seguridad
+    </h1>
+    <p style="font-size:1rem; color:rgba(232,230,224,0.45); max-width:500px; line-height:1.75; font-weight:300; margin-bottom:2rem;">
+      Análisis de vulnerabilidades recientes, alertas de seguridad y noticias del sector publicadas por el equipo técnico de Atenea.
+    </p>
+    <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+      <a href="#" class="filter-tab active">Todo</a>
+      <a href="#" class="filter-tab">Vulnerabilidades</a>
+      <a href="#" class="filter-tab">Noticias</a>
+      <a href="#" class="filter-tab">Alertas</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTENIDO -->
+<section class="py-16 relative z-10" style="background:#0a0a0f;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-3 gap-10">
+
+      <!-- Artículos (2/3) -->
+      <div class="lg:col-span-2">
+
+        <!-- Artículo destacado -->
+        <div class="mb-8 fade-up">
+          <p style="font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.25); margin-bottom:0.75rem;">Destacado</p>
+          <a href="/blog/cve-2024-3400-palo-alto/" class="card-featured">
+            <div class="card-featured-img">
+              <div class="mock-terminal">
+                <div><span style="color:#e07a90;">$</span> curl -s https://target/ssl-vpn/hipreport.esp</div>
+                <div style="color:#f87171; margin-top:4px;">[!] CVE-2024-3400 detectado</div>
+                <div style="color:rgba(232,230,224,0.25);">[!] PAN-OS GlobalProtect</div>
+                <div style="color:#f87171;">    RCE sin autenticación</div>
+                <div style="color:rgba(232,230,224,0.25); margin-top:4px;">[*] CVSS Score: 10.0</div>
+                <div style="color:#fbbf24;">[!] Parche disponible</div>
+                <div style="color:rgba(232,230,224,0.2); margin-top:4px;">────────────────────</div>
+                <div style="color:rgba(232,230,224,0.3);">Afecta &gt;82.000 instancias</div>
+              </div>
+            </div>
+            <div class="card-featured-body">
+              <div>
+                <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.85rem;">
+                  <span class="badge badge-critical">Crítico</span>
+                  <span class="cve-tag">CVE-2024-3400</span>
+                </div>
+                <h3 style="font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:800; color:#fff; line-height:1.3; margin-bottom:0.75rem; letter-spacing:-0.01em;">
+                  RCE crítico en Palo Alto PAN-OS GlobalProtect — explotado activamente
+                </h3>
+                <p style="font-size:0.875rem; color:rgba(232,230,224,0.45); line-height:1.7; font-weight:300;">
+                  Vulnerabilidad de inyección de comandos en el gateway GlobalProtect de PAN-OS que permite a un atacante no autenticado ejecutar código arbitrario con privilegios de root.
+                </p>
+              </div>
+              <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
+                <span class="meta-date">14 mar 2026 · Equipo Atenea</span>
+                <span style="font-size:0.8rem; color:#e07a90; font-weight:500;">Leer análisis →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Grid de artículos -->
+        <div class="grid md:grid-cols-2 gap-5">
+
+          <a href="/blog/ivanti-connect-secure-zero-day/" class="article-card fade-up">
+            <div class="article-meta" style="margin-bottom:0.75rem;">
+              <span class="badge badge-critical">Crítico</span>
+              <span class="cve-tag">CVE-2025-0282</span>
+            </div>
+            <h3>Zero-day en Ivanti Connect Secure explotado antes del parche</h3>
+            <p>Vulnerabilidad de desbordamiento de buffer en la VPN de Ivanti que permite ejecución remota de código sin autenticación previa.</p>
+            <div class="article-meta">
+              <span class="meta-date">10 mar 2026</span>
+            </div>
+          </a>
+
+          <a href="/blog/microsoft-patch-tuesday-marzo-2026/" class="article-card fade-up" style="transition-delay:0.06s;">
+            <div class="article-meta" style="margin-bottom:0.75rem;">
+              <span class="badge badge-news">Noticia</span>
+            </div>
+            <h3>Patch Tuesday marzo 2026: 6 vulnerabilidades críticas en Windows</h3>
+            <p>Microsoft publica su boletín mensual de seguridad con parches para 57 CVEs, incluyendo seis clasificadas como críticas en el kernel de Windows.</p>
+            <div class="article-meta">
+              <span class="meta-date">8 mar 2026</span>
+            </div>
+          </a>
+
+          <a href="/blog/fortinet-fortigate-auth-bypass/" class="article-card fade-up" style="transition-delay:0.12s;">
+            <div class="article-meta" style="margin-bottom:0.75rem;">
+              <span class="badge badge-high">Alto</span>
+              <span class="cve-tag">CVE-2024-55591</span>
+            </div>
+            <h3>Bypass de autenticación en FortiGate permite acceso de administrador</h3>
+            <p>Fallo en la interfaz de administración de FortiOS permite a un atacante remoto obtener privilegios de super-administrador sin credenciales.</p>
+            <div class="article-meta">
+              <span class="meta-date">4 mar 2026</span>
+            </div>
+          </a>
+
+          <a href="/blog/ransomware-lockbit-infraestructura-critica/" class="article-card fade-up" style="transition-delay:0.18s;">
+            <div class="article-meta" style="margin-bottom:0.75rem;">
+              <span class="badge badge-alert">Alerta</span>
+            </div>
+            <h3>LockBit 4.0 apunta a infraestructuras críticas en Europa</h3>
+            <p>El grupo de ransomware LockBit lanza una nueva variante con técnicas de evasión mejoradas dirigida a sectores de energía y salud europeos.</p>
+            <div class="article-meta">
+              <span class="meta-date">28 feb 2026</span>
+            </div>
+          </a>
+
+          <a href="/blog/cisco-ios-xe-vulnerability/" class="article-card fade-up" style="transition-delay:0.24s;">
+            <div class="article-meta" style="margin-bottom:0.75rem;">
+              <span class="badge badge-high">Alto</span>
+              <span class="cve-tag">CVE-2025-20156</span>
+            </div>
+            <h3>Vulnerabilidad en Cisco IOS XE permite escalada de privilegios</h3>
+            <p>Un fallo en el sistema de gestión de Cisco IOS XE permite a usuarios autenticados con bajos privilegios escalar a administrador del sistema.</p>
+            <div class="article-meta">
+              <span class="meta-date">21 feb 2026</span>
+            </div>
+          </a>
+
+          <a href="/blog/openssh-regresshion-cve-2024-6387/" class="article-card fade-up" style="transition-delay:0.30s;">
+            <div class="article-meta" style="margin-bottom:0.75rem;">
+              <span class="badge badge-critical">Crítico</span>
+              <span class="cve-tag">CVE-2024-6387</span>
+            </div>
+            <h3>regreSSHion: RCE en OpenSSH afecta a millones de servidores Linux</h3>
+            <p>Regresión de una vulnerabilidad de 2006 en OpenSSH que permite ejecución remota de código como root en sistemas glibc sin autenticación.</p>
+            <div class="article-meta">
+              <span class="meta-date">15 feb 2026</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Paginación -->
+        <div style="display:flex; justify-content:center; align-items:center; gap:0.5rem; margin-top:3rem;">
+          <span style="font-size:0.8rem; font-weight:600; padding:0.4rem 0.9rem; border-radius:4px; background:var(--granate); color:#fff;">1</span>
+          <a href="#" style="font-size:0.8rem; color:rgba(232,230,224,0.4); padding:0.4rem 0.9rem; border-radius:4px; border:1px solid rgba(255,255,255,0.08); text-decoration:none; transition:all 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(232,230,224,0.4)'">2</a>
+          <a href="#" style="font-size:0.8rem; color:rgba(232,230,224,0.4); padding:0.4rem 0.9rem; border-radius:4px; border:1px solid rgba(255,255,255,0.08); text-decoration:none; transition:all 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(232,230,224,0.4)'">3</a>
+          <span style="font-size:0.8rem; color:rgba(232,230,224,0.2);">···</span>
+          <a href="#" style="font-size:0.8rem; color:rgba(232,230,224,0.4); padding:0.4rem 0.9rem; border-radius:4px; border:1px solid rgba(255,255,255,0.08); text-decoration:none; transition:all 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(232,230,224,0.4)'">Siguiente →</a>
+        </div>
+
+      </div>
+
+      <!-- Sidebar (1/3) -->
+      <div>
+
+        <!-- CVEs recientes -->
+        <div class="sidebar-card fade-up">
+          <p class="sidebar-title">CVEs recientes</p>
+          <a href="/blog/cve-2024-3400-palo-alto/" class="sidebar-link">
+            <div style="flex:1;">
+              <h4>PAN-OS GlobalProtect RCE</h4>
+              <span>CVE-2024-3400 · CVSS 10.0</span>
+            </div>
+            <span class="badge badge-critical" style="margin-top:2px;">Crítico</span>
+          </a>
+          <a href="/blog/ivanti-connect-secure-zero-day/" class="sidebar-link">
+            <div style="flex:1;">
+              <h4>Ivanti Connect Secure Stack Overflow</h4>
+              <span>CVE-2025-0282 · CVSS 9.0</span>
+            </div>
+            <span class="badge badge-critical" style="margin-top:2px;">Crítico</span>
+          </a>
+          <a href="/blog/fortinet-fortigate-auth-bypass/" class="sidebar-link">
+            <div style="flex:1;">
+              <h4>FortiGate Auth Bypass</h4>
+              <span>CVE-2024-55591 · CVSS 9.6</span>
+            </div>
+            <span class="badge badge-critical" style="margin-top:2px;">Crítico</span>
+          </a>
+          <a href="/blog/cisco-ios-xe-vulnerability/" class="sidebar-link">
+            <div style="flex:1;">
+              <h4>Cisco IOS XE Privilege Escalation</h4>
+              <span>CVE-2025-20156 · CVSS 7.2</span>
+            </div>
+            <span class="badge badge-high" style="margin-top:2px;">Alto</span>
+          </a>
+          <a href="/blog/openssh-regresshion-cve-2024-6387/" class="sidebar-link">
+            <div style="flex:1;">
+              <h4>OpenSSH regreSSHion RCE</h4>
+              <span>CVE-2024-6387 · CVSS 8.1</span>
+            </div>
+            <span class="badge badge-critical" style="margin-top:2px;">Crítico</span>
+          </a>
+        </div>
+
+        <!-- Productos afectados -->
+        <div class="sidebar-card fade-up" style="transition-delay:0.1s;">
+          <p class="sidebar-title">Productos más afectados</p>
+          <div style="display:flex; flex-direction:column; gap:0.6rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.83rem; color:rgba(232,230,224,0.5); font-weight:300;">Palo Alto PAN-OS</span>
+              <span class="badge badge-critical">3 CVEs</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.83rem; color:rgba(232,230,224,0.5); font-weight:300;">Fortinet FortiOS</span>
+              <span class="badge badge-high">2 CVEs</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.83rem; color:rgba(232,230,224,0.5); font-weight:300;">Microsoft Windows</span>
+              <span class="badge badge-high">6 CVEs</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.83rem; color:rgba(232,230,224,0.5); font-weight:300;">Cisco IOS XE</span>
+              <span class="badge badge-medium">1 CVE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-inline fade-up" style="transition-delay:0.15s;">
+          <p style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:#fff; margin-bottom:0.5rem;">¿Afectan a su organización?</p>
+          <p style="font-size:0.8rem; color:rgba(232,230,224,0.4); font-weight:300; line-height:1.6; margin-bottom:1.25rem;">
+            Auditamos si su infraestructura es vulnerable a los CVEs publicados.
+          </p>
+          <a href="/contacto/" class="btn-primary" style="font-size:0.83rem; padding:0.65rem 1.25rem;">Solicitar análisis</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="py-12 relative z-10">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <a href="/" style="display:flex; align-items:center; gap:8px; text-decoration:none; margin-bottom:0.75rem;">
+          <img src="/assets/logo.png" alt="" aria-hidden="true" style="height:28px; width:auto; opacity:0.85;">
+          <span style="font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:800; color:#fff;">
+            <span style="color:var(--granate)">Atenea</span> Ciberseguridad
+          </span>
+        </a>
+        <p style="font-size:0.83rem; color:rgba(232,230,224,0.35); line-height:1.65; font-weight:300;">
+          Empresa especializada en seguridad ofensiva, auditorías técnicas y consultoría de ciberseguridad.
+        </p>
+      </div>
+      <div>
+        <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.3); margin-bottom:0.8rem; font-weight:600;">Servicios</p>
+        <div class="flex flex-col gap-2">
+          <a href="/auditorias/" style="font-size:0.85rem;">Pentesting</a>
+          <a href="/auditorias/" style="font-size:0.85rem;">Auditorías técnicas</a>
+          <a href="/auditorias/" style="font-size:0.85rem;">SOC & Monitorización</a>
+          <a href="/nemesis/"    style="font-size:0.85rem; color:#e07a90 !important;">Nemesis · Herramienta</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.3); margin-bottom:0.8rem; font-weight:600;">Contacto</p>
+        <a href="mailto:contacto@ateneaciberseguridad.com" style="font-size:0.85rem;">
+          contacto@ateneaciberseguridad.com
+        </a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem;">
+      <p style="font-size:0.8rem; color:rgba(232,230,224,0.25);">© 2026 Atenea Ciberseguridad</p>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="/aviso-legal.html" style="font-size:0.8rem;">Aviso legal</a>
+        <a href="/politica-privacidad.html" style="font-size:0.8rem;">Privacidad</a>
+        <a href="/politica-cookies.html" style="font-size:0.8rem;">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIES -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function () {
+  if (window.cookieconsent) {
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: "#0f0f18", text: "#b0aea8" },
+        button: { background: "#7a0019", text: "#ffffff" }
+      },
+      theme: "classic", position: "bottom", type: "opt-in",
+      content: {
+        message: "Esta web utiliza cookies para mejorar la experiencia.",
+        allow: "Aceptar", deny: "Rechazar",
+        link: "Política de cookies", href: "/politica-cookies.html"
+      }
+    });
+  }
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
