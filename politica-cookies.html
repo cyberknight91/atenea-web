@@ -1,576 +1,281 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/assets/favicon.png">
-
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAD+0lEQVR4nO2WXWhcVRSFv33OmZkwYO1/fqxKgqWhgtKIVkVRtNAnEa2mvrWiKCIFi0ikqd6MpomxaCuCT7aoUJQW/KkF81LtQysEhPhgIrSUmKZmJp001dikM5l7z/ZhJho1STOmBcGsp8s596y97t77nr1gAf93yL858ziYtSC9oGtBS+sGoAUi+XPtyuIg2CvNOacMBGBS4CefPVX3KrJB4VbQxYrkLZxR5ITFdqYZyG4A3wjRvAVMDf4qNU+CblNkXbx0VAFfyrhFyONHFb1lF5n+AFwKwnkJAGimZgPom3HMOkVRYAIfCvyqoCCL44gTIIffatEBgyReJ/PV5bhnEiAKvMySRY6K/RZqI+izyCMeHVU4YWBYUavFV9MWVuTxvR0M7d5BdVMc2VJAexz5p1oY+a0U6B/NaaaLHoAIaIzYDQoNr5Fu8PiMg/4Ivxf40WAGFPnBQ18MeWACHetgaHcA8TbSHS0MrgUa8iRWC2gww8dOK2ASEaKKnm1iybUgd4+jnznMowobQ6JNBnksDksn0GaLnH2RypVAGIAD8HDOILM2opttM8TlHZET4vUKBww85zB1ggKCRbgGe9swYYNgtiTh3QLLX2hjOP0MxARNGsxY2QJSpVolcdkCPmnQcxHmZAzqcvhIAAFVGBwhPCKQBf02gVl+Efs2kF7GyqUgxuKyUzn/jplKoICk6P8FNAJvDKgtNpwaMALnQ3w36J2CPO/RCwoYzO1FAlcHXCpyIJQpgOCPW09OKe5BxZ/WIpGJQBSpXIR7WJEvwbc5pG8C3wPkFMSg60FP/5WrDAE3lxQLfA5sbifTm8OfdohxCB797hLRiIefW8nsmcA9UYD3Y9hPS+XZ6JEjU7nKEtBYvP0khz+s6JpmKmsFuuOIejQEluXxW4HrAm6saODMqMD1EYXqgBVVwOoE4ReAlLjKE0Dx37VvMTQm8KFH3lH8exYRjx5zSG0Mc4cSfZSiP9dN9UMC460M9RSwexQ9lCJ7sZT+GTNwuatYApBRViUqCM8IpsnjMwZ2xDF3FdDIwIEI7bJQr/h9HhtT9HCcqB6y46XuL78Ek1noBdnD2UugjXHYJ/CTYj6uwBgPFwzhNkFPOsxRT3wE6FR4OkX2Yu8s3T9XARyC6CDYdoa+mUC3J7E9Dv3+POH9ApmQ2JJdDH3dT/6YEHUp7H2DTOdBsIfmMI4vKwCgEaIAXBvpvTl8UxJ7PImsH2P8vpMMDr5C1aZVJAaB/e2k2wJwc/ECUKYlm5zvzdRsTiCf5PGnBAYcck8Iz7Yy+MFcPMC8MDlotrPipp3UHN9JdddL1KyZunfVMZ03vBp+cVYEYLRoXCSYYy8tYAH/SfwOOpaj7+Di4oIAAAAASUVORK5CYII=">
   <title>Política de Cookies · Atenea Ciberseguridad</title>
   <meta name="description" content="Política de cookies de Atenea Ciberseguridad. Información sobre los tipos de cookies utilizadas y cómo gestionarlas.">
   <meta name="robots" content="noindex, follow">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
-
     :root {
-      --granate: #7a0019;
-      --granate-dark: #5c0012;
+      --granate: #7a0019; --granate-dark: #5c0012; --granate-light: #f5e6e9;
+      --ink: #111013; --ink-60: rgba(17,16,19,0.6); --ink-30: rgba(17,16,19,0.3);
+      --ink-10: rgba(17,16,19,0.08); --bg: #f8f6f2; --bg-white: #ffffff;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "IBM Plex Sans", sans-serif; --mono: "IBM Plex Mono", monospace;
     }
-
-    * { box-sizing: border-box; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: #0a0a0f;
-      color: #e8e6e0;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, .brand { font-family: 'Syne', sans-serif; }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
-
-    /* ---- NAVBAR ---- */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(122, 0, 25, 0.2);
-    }
-
-    .brand {
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand span { color: var(--granate); }
-
-    nav a {
-      font-size: 0.875rem;
-      font-weight: 400;
-      color: rgba(232, 230, 224, 0.65);
-      transition: color 0.2s;
-      text-decoration: none;
-    }
-
-    nav a:hover { color: #fff; }
-
-    .nav-cta {
-      background: var(--granate);
-      color: #fff !important;
-      padding: 0.45rem 1.1rem;
-      border-radius: 4px;
-      font-weight: 500 !important;
-      transition: background 0.2s !important;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    nav { position: sticky; top: 0; z-index: 200; background: rgba(248,246,242,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--ink-10); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 900; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+    .brand em { color: var(--granate); font-style: normal; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--ink-60); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { background: var(--granate) !important; color: #fff !important; padding: 8px 20px !important; border-radius: 3px; font-weight: 500 !important; transition: background 0.2s !important; }
     .nav-cta:hover { background: var(--granate-dark) !important; }
-
-    #menu-toggle { display: none; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: #e8e6e0; border-radius: 2px; transition: all 0.25s; }
-
-    @media (max-width: 768px) {
-      .hamburger { display: flex; }
-      .nav-links { display: none; flex-direction: column; gap: 0; width: 100%; border-top: 1px solid rgba(255,255,255,0.07); padding: 0.75rem 0 0.5rem; }
-      .nav-links a { padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; }
-      .nav-links a:last-child { border-bottom: none; }
-      #menu-toggle:checked ~ .nav-links { display: flex; }
-      #menu-toggle:checked ~ label .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      #menu-toggle:checked ~ label .hamburger span:nth-child(2) { opacity: 0; }
-      #menu-toggle:checked ~ label .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    }
-
-    /* ---- CONTENIDO ---- */
-    .legal-section {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-      position: relative;
-      z-index: 10;
-    }
-
-    .legal-header {
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      padding-bottom: 2.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .page-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--granate);
-      margin-bottom: 0.75rem;
-    }
-
-    .legal-block {
-      padding-bottom: 2.5rem;
-      margin-bottom: 2.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .legal-block:last-child { border-bottom: none; margin-bottom: 0; }
-
-    .legal-block h2 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .legal-block h2::before {
-      content: '';
-      width: 3px;
-      height: 18px;
-      background: var(--granate);
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-
-    .legal-block p {
-      font-size: 0.9rem;
-      color: rgba(232,230,224,0.5);
-      line-height: 1.85;
-      font-weight: 300;
-      margin-bottom: 0.75rem;
-    }
-
+    .hamburger-btn { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+    .hamburger-btn span { display: block; width: 22px; height: 1.5px; background: var(--ink); border-radius: 2px; transition: all 0.25s; }
+    .mobile-menu { display: none; flex-direction: column; background: var(--bg-white); border-bottom: 1px solid var(--ink-10); padding: 12px 24px 20px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 0.95rem; color: var(--ink-60); text-decoration: none; padding: 11px 0; border-bottom: 1px solid var(--ink-10); transition: color 0.2s; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--ink); }
+    @media (max-width: 768px) { .nav-links { display: none; } .hamburger-btn { display: flex; } }
+    .page-hero { background: var(--bg-white); border-bottom: 1px solid var(--ink-10); padding: 56px 24px 64px; }
+    .page-hero-inner { max-width: 1100px; margin: 0 auto; }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.7rem; color: var(--ink-30); letter-spacing: 0.05em; margin-bottom: 28px; }
+    .breadcrumb a { color: var(--ink-30); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--granate); }
+    .breadcrumb span { color: var(--granate); }
+    .page-kicker { font-family: var(--mono); font-size: 0.7rem; color: var(--granate); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .page-kicker::before { content: ""; width: 20px; height: 1.5px; background: var(--granate); }
+    .page-hero h1 { font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 900; color: var(--ink); letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 12px; }
+    .page-date { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-30); letter-spacing: 0.05em; }
+    .legal-wrap { max-width: 1100px; margin: 0 auto; padding: 64px 24px 96px; }
+    .legal-grid { display: grid; grid-template-columns: 220px 1fr; gap: 56px; align-items: start; }
+    .toc { background: var(--bg-white); border: 1px solid var(--ink-10); border-radius: 10px; padding: 20px; position: sticky; top: 80px; }
+    .toc-title { font-family: var(--mono); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 14px; }
+    .toc a { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--ink-60); text-decoration: none; padding: 7px 0; border-bottom: 1px solid var(--ink-10); transition: color 0.2s; font-weight: 300; }
+    .toc a:last-child { border-bottom: none; }
+    .toc a:hover { color: var(--granate); }
+    .toc-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-10); flex-shrink: 0; transition: background 0.2s; }
+    .toc a:hover .toc-dot { background: var(--granate); }
+    .legal-block { padding-bottom: 40px; margin-bottom: 40px; border-bottom: 1px solid var(--ink-10); }
+    .legal-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .legal-block h2 { font-family: var(--serif); font-size: 1.25rem; font-weight: 900; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.015em; line-height: 1.2; display: flex; align-items: center; gap: 12px; }
+    .legal-block h2::before { content: ""; width: 3px; height: 20px; background: var(--granate); border-radius: 2px; flex-shrink: 0; }
+    .legal-block p { font-size: 0.9rem; color: var(--ink-60); line-height: 1.85; font-weight: 300; margin-bottom: 12px; }
     .legal-block p:last-child { margin-bottom: 0; }
+    .legal-block ul { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; list-style: none; }
+    .legal-block ul li { font-size: 0.9rem; color: var(--ink-60); line-height: 1.7; font-weight: 300; display: flex; align-items: flex-start; gap: 10px; }
+    .legal-block ul li::before { content: ""; width: 4px; height: 4px; min-width: 4px; background: var(--granate); border-radius: 50%; margin-top: 9px; }
+    .legal-block strong { color: var(--ink); font-weight: 500; }
+    .legal-block a { color: var(--granate); text-decoration: underline; transition: opacity 0.2s; }
+    .legal-block a:hover { opacity: 0.75; }
+    .info-box { background: var(--granate-light); border: 1px solid rgba(122,0,25,0.15); border-left: 3px solid var(--granate); border-radius: 6px; padding: 16px 20px; margin-bottom: 12px; }
+    .info-box p { color: var(--ink-60) !important; margin-bottom: 0 !important; font-size: 0.875rem !important; }
+    .info-box strong { color: var(--ink); font-weight: 500; }
+    .info-box a { color: var(--granate); }
+    footer { background: var(--bg-white); border-top: 1px solid var(--ink-10); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 56px 24px 32px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand { font-family: var(--serif); font-size: 1rem; font-weight: 900; color: var(--ink); text-decoration: none; display: block; margin-bottom: 12px; }
+    .footer-brand em { color: var(--granate); font-style: normal; }
+    .footer-desc { font-size: 0.82rem; color: var(--ink-30); line-height: 1.65; font-weight: 300; }
+    .footer-col-title { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 14px; font-weight: 500; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { font-size: 0.83rem; color: var(--ink-60); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-bottom { border-top: 1px solid var(--ink-10); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-30); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-30); text-decoration: none; transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--ink); }
+    .footer-legal a.active { color: var(--granate); font-weight: 500; }
+    @media (max-width: 1024px) { .legal-grid { grid-template-columns: 1fr; } .toc { position: static; } }
+    @media (max-width: 768px) { .page-hero { padding: 48px 20px 56px; } .legal-wrap { padding: 48px 20px 64px; } .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
 
-    /* Tabla de cookies */
-    .cookie-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.75rem;
-    }
-
-    .cookie-table th {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(232,230,224,0.3);
-      padding: 0.65rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .cookie-table td {
-      font-size: 0.855rem;
-      color: rgba(232,230,224,0.5);
-      font-weight: 300;
-      padding: 0.85rem 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      vertical-align: top;
-      line-height: 1.6;
-    }
-
-    .cookie-table tr:last-child td { border-bottom: none; }
-
-    .cookie-table tr:hover td { background: rgba(255,255,255,0.02); }
-
-    .badge {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 20px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .badge-required  { background: rgba(122,0,25,0.15); border: 1px solid rgba(122,0,25,0.3); color: #e07a90; }
-    .badge-optional  { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(232,230,224,0.4); }
-
-    /* Info box */
-    .info-box {
-      background: rgba(122,0,25,0.06);
-      border: 1px solid rgba(122,0,25,0.2);
-      border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      margin-top: 1rem;
-    }
-
-    .info-box p { color: rgba(232,230,224,0.5) !important; margin-bottom: 0 !important; }
-
-    /* Browsers grid */
-    .browser-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-
-    .browser-item {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 8px;
-      padding: 0.85rem 1rem;
-      font-size: 0.83rem;
-      color: rgba(232,230,224,0.45);
-      font-weight: 300;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .browser-item:hover { border-color: rgba(122,0,25,0.3); color: rgba(232,230,224,0.75); }
-    .browser-item::before { content: '→'; color: var(--granate); font-size: 0.75rem; }
-
-    /* Índice lateral */
-    .toc {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 10px;
-      padding: 1.5rem;
-      position: sticky;
-      top: 80px;
-    }
-
-    .toc-title {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(232,230,224,0.3);
-      margin-bottom: 1rem;
-    }
-
-    .toc a {
-      display: block;
-      font-size: 0.82rem;
-      color: rgba(232,230,224,0.4);
-      text-decoration: none;
-      padding: 0.35rem 0;
-      border-left: 2px solid transparent;
-      padding-left: 0.75rem;
-      transition: all 0.2s;
-      font-weight: 300;
-    }
-
-    .toc a:hover { color: #fff; border-left-color: var(--granate); }
-
-    /* Footer */
-    footer { background: #060608; border-top: 1px solid rgba(255,255,255,0.06); }
-    footer a { color: rgba(232,230,224,0.3); transition: color 0.2s; text-decoration: none; }
-    footer a:hover { color: #fff; }
-
-    .cc-btn { margin-left: 8px; border-radius: 6px; font-weight: 500; }
-    body { padding-bottom: 80px; }
-  </style>
+    .badge { display: inline-block; font-family: var(--mono); font-size: 0.65rem; font-weight: 500; padding: 2px 9px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+    .badge-required { background: var(--granate-light); border: 1px solid rgba(122,0,25,0.2); color: var(--granate); }
+    .badge-optional  { background: var(--ink-10); border: 1px solid var(--ink-10); color: var(--ink-30); }
+    .type-card { background: var(--bg-white); border: 1px solid var(--ink-10); border-radius: 8px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start; margin-bottom: 10px; transition: border-color 0.2s; }
+    .type-card:hover { border-color: rgba(122,0,25,0.2); }
+    .type-card-body h4 { font-size: 0.875rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .type-card-body p { font-size: 0.82rem; color: var(--ink-60); line-height: 1.6; font-weight: 300; margin: 0; }
+    .cookie-table-wrap { border: 1px solid var(--ink-10); border-radius: 8px; overflow: hidden; margin-top: 16px; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { font-family: var(--mono); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-30); padding: 10px 16px; text-align: left; background: var(--bg); border-bottom: 1px solid var(--ink-10); }
+    tbody td { font-size: 0.85rem; color: var(--ink-60); font-weight: 300; padding: 12px 16px; border-bottom: 1px solid var(--ink-10); vertical-align: top; line-height: 1.55; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: var(--bg); }
+    td.mono { font-family: var(--mono); font-size: 0.78rem; color: var(--ink); }
+    .browser-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; margin-top: 16px; }
+    .browser-item { background: var(--bg-white); border: 1px solid var(--ink-10); border-radius: 6px; padding: 10px 14px; font-size: 0.8rem; color: var(--ink-60); font-weight: 300; text-decoration: none; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+    .browser-item:hover { border-color: rgba(122,0,25,0.25); color: var(--granate); }
+    .browser-item::before { content: "→"; font-family: var(--mono); font-size: 0.72rem; color: var(--granate); flex-shrink: 0; }
+</style>
 </head>
-
 <body>
-
-<!-- NAVBAR -->
 <nav>
-  <div class="max-w-6xl mx-auto px-5 py-4">
-    <div class="flex justify-between items-center">
-      <a href="/" class="brand">
-        <img src="/assets/logo.png" alt="Atenea Ciberseguridad" style="height:34px; width:auto;">
-        <span><span>Atenea</span> Ciberseguridad</span>
-      </a>
-      <input type="checkbox" id="menu-toggle" class="hidden">
-      <label for="menu-toggle">
-        <div class="hamburger"><span></span><span></span><span></span></div>
-      </label>
-      <div class="nav-links flex items-center gap-7">
-        <a href="/">Inicio</a>
-        <a href="/auditorias/">Servicios</a>
-        <a href="/quienes-somos/">Quiénes somos</a>
-        <a href="/contacto/" class="nav-cta">Contacto</a>
-      </div>
-    </div>
+  <div class="nav-inner">
+    <a href="/" class="brand"><em>Atenea</em> Ciberseguridad</a>
+    <ul class="nav-links">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/auditorias/">Servicios</a></li>
+      <li><a href="/quienes-somos/">Quiénes somos</a></li>
+      <li><a href="/contacto/" class="nav-cta">Contacto</a></li>
+    </ul>
+    <button class="hamburger-btn" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/">Inicio</a><a href="/auditorias/">Servicios</a>
+    <a href="/quienes-somos/">Quiénes somos</a>
+    <a href="/contacto/" style="color:var(--granate);font-weight:500;">Contacto</a>
   </div>
 </nav>
 
-
-<!-- CONTENIDO -->
-<section class="legal-section">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid lg:grid-cols-4 gap-12">
-
-      <!-- Índice lateral -->
-      <div class="hidden lg:block">
-        <div class="toc">
-          <p class="toc-title">Contenido</p>
-          <a href="#que-son">¿Qué son las cookies?</a>
-          <a href="#tipos">Tipos de cookies</a>
-          <a href="#tabla">Detalle por cookie</a>
-          <a href="#gestion">Gestión y consentimiento</a>
-          <a href="#navegadores">Configurar el navegador</a>
-          <a href="#contacto">Contacto</a>
-        </div>
-      </div>
-
-      <!-- Texto -->
-      <div class="lg:col-span-3">
-
-        <div class="legal-header">
-          <p class="page-label">Privacidad</p>
-          <h1 style="font-size:clamp(2rem,5vw,3rem); font-weight:800; letter-spacing:-0.03em; color:#fff; line-height:1.05; margin-bottom:0.75rem;">
-            Política de Cookies
-          </h1>
-          <p style="font-size:0.875rem; color:rgba(232,230,224,0.3); font-weight:300;">
-            Última actualización: marzo de 2026
-          </p>
-        </div>
-
-        <div class="legal-block">
-          <p>
-            En Atenea Ciberseguridad utilizamos cookies con el objetivo de mejorar la experiencia de navegación
-            y garantizar el correcto funcionamiento del sitio web. A continuación le explicamos qué son,
-            qué tipos utilizamos y cómo puede gestionarlas.
-          </p>
-        </div>
-
-        <div id="que-son" class="legal-block">
-          <h2>¿Qué son las cookies?</h2>
-          <p>
-            Las cookies son pequeños archivos de texto que los sitios web almacenan en el dispositivo del usuario
-            al visitar una página. Permiten recordar información sobre la visita para facilitar futuras interacciones,
-            mejorar el rendimiento del sitio y, en algunos casos, analizar el comportamiento de navegación de forma
-            agregada y anónima.
-          </p>
-          <p>
-            Las cookies no contienen información personal identificable por sí mismas y no pueden ejecutar programas
-            ni transmitir virus. Su uso está regulado en España por la Ley 34/2002 (LSSI-CE) y el Reglamento
-            General de Protección de Datos (RGPD).
-          </p>
-        </div>
-
-        <div id="tipos" class="legal-block">
-          <h2>Tipos de cookies utilizadas</h2>
-          <p>Este sitio web puede utilizar los siguientes tipos de cookies:</p>
-
-          <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:1rem;">
-
-            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:8px; padding:1.1rem 1.25rem; display:flex; gap:1rem; align-items:flex-start;">
-              <span class="badge badge-required" style="margin-top:2px; flex-shrink:0;">Necesaria</span>
-              <div>
-                <p style="font-size:0.875rem; color:rgba(232,230,224,0.7); font-weight:500; margin-bottom:0.25rem !important;">Cookies técnicas</p>
-                <p style="font-size:0.83rem; margin-bottom:0 !important;">Imprescindibles para el funcionamiento básico del sitio. Sin ellas el sitio web no puede operar correctamente. No requieren consentimiento del usuario.</p>
-              </div>
-            </div>
-
-            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:8px; padding:1.1rem 1.25rem; display:flex; gap:1rem; align-items:flex-start;">
-              <span class="badge badge-optional" style="margin-top:2px; flex-shrink:0;">Opcional</span>
-              <div>
-                <p style="font-size:0.875rem; color:rgba(232,230,224,0.7); font-weight:500; margin-bottom:0.25rem !important;">Cookies de preferencias</p>
-                <p style="font-size:0.83rem; margin-bottom:0 !important;">Permiten recordar configuraciones del usuario, como el idioma o las preferencias de visualización, para personalizar la experiencia de navegación.</p>
-              </div>
-            </div>
-
-            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:8px; padding:1.1rem 1.25rem; display:flex; gap:1rem; align-items:flex-start;">
-              <span class="badge badge-optional" style="margin-top:2px; flex-shrink:0;">Opcional</span>
-              <div>
-                <p style="font-size:0.875rem; color:rgba(232,230,224,0.7); font-weight:500; margin-bottom:0.25rem !important;">Cookies analíticas</p>
-                <p style="font-size:0.83rem; margin-bottom:0 !important;">Recopilan información agregada y anónima sobre el comportamiento de navegación para ayudarnos a comprender cómo se utiliza el sitio y mejorar su contenido.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div id="tabla" class="legal-block">
-          <h2>Detalle de cookies utilizadas</h2>
-          <p>A continuación se detalla la relación de cookies activas en este sitio:</p>
-
-          <div style="overflow-x:auto; margin-top:0.75rem; border:1px solid rgba(255,255,255,0.07); border-radius:8px;">
-            <table class="cookie-table">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Tipo</th>
-                  <th>Finalidad</th>
-                  <th>Duración</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="font-family:monospace; font-size:0.8rem; color:rgba(232,230,224,0.6);">cookieconsent_status</td>
-                  <td><span class="badge badge-required">Necesaria</span></td>
-                  <td>Almacena la preferencia de consentimiento de cookies del usuario.</td>
-                  <td>1 año</td>
-                </tr>
-                <tr>
-                  <td style="font-family:monospace; font-size:0.8rem; color:rgba(232,230,224,0.6);">_ga</td>
-                  <td><span class="badge badge-optional">Analítica</span></td>
-                  <td>Cookie de Google Analytics para distinguir usuarios únicos.</td>
-                  <td>2 años</td>
-                </tr>
-                <tr>
-                  <td style="font-family:monospace; font-size:0.8rem; color:rgba(232,230,224,0.6);">_ga_*</td>
-                  <td><span class="badge badge-optional">Analítica</span></td>
-                  <td>Mantiene el estado de la sesión en Google Analytics 4.</td>
-                  <td>2 años</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p style="margin-top:0.75rem; font-size:0.8rem; color:rgba(232,230,224,0.3);">
-            Las cookies analíticas solo se activan si el usuario acepta su uso a través del banner de consentimiento.
-          </p>
-        </div>
-
-        <div id="gestion" class="legal-block">
-          <h2>Gestión y consentimiento</h2>
-          <p>
-            Al acceder al sitio web por primera vez se muestra un banner de consentimiento que permite al usuario
-            aceptar o rechazar el uso de cookies no esenciales. Las cookies técnicas se instalan de forma
-            automática al no requerir consentimiento previo.
-          </p>
-          <p>
-            El usuario puede revocar en cualquier momento su consentimiento eliminando las cookies desde la
-            configuración del navegador. La retirada del consentimiento no afectará a la licitud del tratamiento
-            realizado con anterioridad.
-          </p>
-          <div class="info-box">
-            <p>
-              La eliminación de cookies técnicas puede afectar al correcto funcionamiento de algunas partes del sitio web.
-            </p>
-          </div>
-        </div>
-
-        <div id="navegadores" class="legal-block">
-          <h2>Cómo configurar su navegador</h2>
-          <p>
-            Puede gestionar, bloquear o eliminar las cookies desde la configuración de su navegador.
-            A continuación encontrará los enlaces de ayuda de los navegadores más habituales:
-          </p>
-          <div class="browser-grid">
-            <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" class="browser-item">Google Chrome</a>
-            <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer" class="browser-item">Mozilla Firefox</a>
-            <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer" class="browser-item">Microsoft Edge</a>
-            <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" class="browser-item">Safari</a>
-            <a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank" rel="noopener noreferrer" class="browser-item">Opera</a>
-          </div>
-        </div>
-
-        <div id="contacto" class="legal-block">
-          <h2>Contacto</h2>
-          <p>
-            Para cualquier consulta relacionada con el uso de cookies o con el tratamiento de sus datos personales,
-            puede dirigirse a nosotros a través de:
-          </p>
-          <div class="info-box">
-            <p>
-              <strong style="color:rgba(232,230,224,0.75); font-weight:500;">Correo electrónico:</strong>
-              <a href="mailto:contacto@ateneaciberseguridad.com"
-                 style="color:rgba(232,230,224,0.5); transition:color 0.2s; text-decoration:none;"
-                 onmouseover="this.style.color='#fff'"
-                 onmouseout="this.style.color='rgba(232,230,224,0.5)'">
-                contacto@ateneaciberseguridad.com
-              </a>
-            </p>
-          </div>
-          <p>
-            Para más información sobre el tratamiento de sus datos personales, consulte nuestra
-            <a href="/politica-privacidad.html"
-               style="color:rgba(232,230,224,0.55); text-decoration:underline; transition:color 0.2s;"
-               onmouseover="this.style.color='#fff'"
-               onmouseout="this.style.color='rgba(232,230,224,0.55)'">
-              Política de Privacidad
-            </a>.
-          </p>
-        </div>
-
-      </div>
-    </div>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="/">Inicio</a><span>/</span><span style="color:var(--ink-60);">Política de cookies</span></div>
+    <div class="page-kicker">Privacidad</div>
+    <h1>Política de Cookies</h1>
+    <p class="page-date">Última actualización: marzo de 2026</p>
   </div>
 </section>
 
+<div class="legal-wrap">
+  <div class="legal-grid">
+    <aside>
+      <div class="toc">
+        <p class="toc-title">Contenido</p>
+        <a href="#que-son"><div class="toc-dot"></div>¿Qué son las cookies?</a>
+        <a href="#tipos"><div class="toc-dot"></div>Tipos de cookies</a>
+        <a href="#tabla"><div class="toc-dot"></div>Detalle por cookie</a>
+        <a href="#gestion"><div class="toc-dot"></div>Gestión y consentimiento</a>
+        <a href="#navegadores"><div class="toc-dot"></div>Configurar el navegador</a>
+        <a href="#contacto"><div class="toc-dot"></div>Contacto</a>
+      </div>
+    </aside>
+    <div>
 
-<!-- FOOTER -->
-<footer class="py-12 relative z-10">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <div class="legal-block">
+        <p>En Atenea Ciberseguridad utilizamos cookies con el objetivo de mejorar la experiencia de navegación y garantizar el correcto funcionamiento del sitio web. A continuación le explicamos qué son, qué tipos utilizamos y cómo puede gestionarlas.</p>
+      </div>
+
+      <div id="que-son" class="legal-block">
+        <h2>¿Qué son las cookies?</h2>
+        <p>Las cookies son pequeños archivos de texto que los sitios web almacenan en el dispositivo del usuario al visitar una página. Permiten recordar información sobre la visita para facilitar futuras interacciones, mejorar el rendimiento del sitio y, en algunos casos, analizar el comportamiento de navegación de forma agregada y anónima.</p>
+        <p>Las cookies no contienen información personal identificable por sí mismas y no pueden ejecutar programas ni transmitir virus. Su uso está regulado en España por la Ley 34/2002 (LSSI-CE) y el Reglamento General de Protección de Datos (RGPD).</p>
+      </div>
+
+      <div id="tipos" class="legal-block">
+        <h2>Tipos de cookies utilizadas</h2>
+        <p>Este sitio web puede utilizar los siguientes tipos de cookies:</p>
+        <div style="margin-top:16px;">
+          <div class="type-card">
+            <span class="badge badge-required" style="margin-top:2px;flex-shrink:0;">Necesaria</span>
+            <div class="type-card-body">
+              <h4>Cookies técnicas</h4>
+              <p>Imprescindibles para el funcionamiento básico del sitio. Sin ellas el sitio web no puede operar correctamente. No requieren consentimiento del usuario.</p>
+            </div>
+          </div>
+          <div class="type-card">
+            <span class="badge badge-optional" style="margin-top:2px;flex-shrink:0;">Opcional</span>
+            <div class="type-card-body">
+              <h4>Cookies de preferencias</h4>
+              <p>Permiten recordar configuraciones del usuario, como el idioma o las preferencias de visualización, para personalizar la experiencia de navegación.</p>
+            </div>
+          </div>
+          <div class="type-card">
+            <span class="badge badge-optional" style="margin-top:2px;flex-shrink:0;">Opcional</span>
+            <div class="type-card-body">
+              <h4>Cookies analíticas</h4>
+              <p>Recopilan información agregada y anónima sobre el comportamiento de navegación para ayudarnos a comprender cómo se utiliza el sitio y mejorar su contenido.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tabla" class="legal-block">
+        <h2>Detalle de cookies utilizadas</h2>
+        <p>A continuación se detalla la relación de cookies activas en este sitio:</p>
+        <div class="cookie-table-wrap">
+          <table>
+            <thead><tr><th>Nombre</th><th>Tipo</th><th>Finalidad</th><th>Duración</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">cookieconsent_status</td><td><span class="badge badge-required">Necesaria</span></td><td>Almacena la preferencia de consentimiento de cookies del usuario.</td><td>1 año</td></tr>
+              <tr><td class="mono">_ga</td><td><span class="badge badge-optional">Analítica</span></td><td>Cookie de Google Analytics para distinguir usuarios únicos.</td><td>2 años</td></tr>
+              <tr><td class="mono">_ga_*</td><td><span class="badge badge-optional">Analítica</span></td><td>Mantiene el estado de la sesión en Google Analytics 4.</td><td>2 años</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:10px;font-size:0.78rem;color:var(--ink-30);font-family:var(--mono);">Las cookies analíticas solo se activan si el usuario acepta su uso a través del banner de consentimiento.</p>
+      </div>
+
+      <div id="gestion" class="legal-block">
+        <h2>Gestión y consentimiento</h2>
+        <p>Al acceder al sitio web por primera vez se muestra un banner de consentimiento que permite al usuario aceptar o rechazar el uso de cookies no esenciales. Las cookies técnicas se instalan de forma automática al no requerir consentimiento previo.</p>
+        <p>El usuario puede revocar en cualquier momento su consentimiento eliminando las cookies desde la configuración del navegador. La retirada del consentimiento no afectará a la licitud del tratamiento realizado con anterioridad.</p>
+        <div class="info-box"><p>La eliminación de cookies técnicas puede afectar al correcto funcionamiento de algunas partes del sitio web.</p></div>
+      </div>
+
+      <div id="navegadores" class="legal-block">
+        <h2>Cómo configurar su navegador</h2>
+        <p>Puede gestionar, bloquear o eliminar las cookies desde la configuración de su navegador. A continuación encontrará los enlaces de ayuda de los navegadores más habituales:</p>
+        <div class="browser-grid">
+          <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" class="browser-item">Google Chrome</a>
+          <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer" class="browser-item">Mozilla Firefox</a>
+          <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer" class="browser-item">Microsoft Edge</a>
+          <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" class="browser-item">Safari</a>
+          <a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank" rel="noopener noreferrer" class="browser-item">Opera</a>
+        </div>
+      </div>
+
+      <div id="contacto" class="legal-block">
+        <h2>Contacto</h2>
+        <p>Para cualquier consulta relacionada con el uso de cookies o con el tratamiento de sus datos personales, puede dirigirse a nosotros a través de:</p>
+        <div class="info-box">
+          <p><strong>Correo electrónico:</strong> <a href="mailto:contacto@ateneaciberseguridad.com">contacto@ateneaciberseguridad.com</a><br>
+          <strong>Teléfono:</strong> <a href="tel:+34602068307">+34 602 068 307</a></p>
+        </div>
+        <p>Para más información sobre el tratamiento de sus datos personales, consulte nuestra <a href="/politica-privacidad.html">Política de Privacidad</a>.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
       <div>
-        <a href="/" style="display:flex; align-items:center; gap:8px; text-decoration:none; margin-bottom:0.75rem;">
-          <img src="/assets/logo.png" alt="" aria-hidden="true" style="height:28px; width:auto; opacity:0.85;">
-          <span style="font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:800; color:#fff;">
-            <span style="color:var(--granate)">Atenea</span> Ciberseguridad
-          </span>
-        </a>
-        <p style="font-size:0.83rem; color:rgba(232,230,224,0.35); line-height:1.65; font-weight:300;">
-          Empresa especializada en seguridad ofensiva, auditorías técnicas y consultoría de ciberseguridad.
-        </p>
+        <a href="/" class="footer-brand"><em>Atenea</em> Ciberseguridad</a>
+        <p class="footer-desc">Empresa especializada en seguridad ofensiva, auditorías técnicas y consultoría de ciberseguridad para organizaciones públicas y privadas.</p>
       </div>
       <div>
-        <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.3); margin-bottom:0.8rem; font-weight:600;">Servicios</p>
-        <div class="flex flex-col gap-2">
-          <a href="/auditorias/" style="font-size:0.85rem;">Pentesting</a>
-          <a href="/auditorias/" style="font-size:0.85rem;">Auditorías técnicas</a>
-          <a href="/auditorias/" style="font-size:0.85rem;">SOC & Monitorización</a>
-          <a href="/auditorias/" style="font-size:0.85rem;">Consultoría normativa</a>
+        <p class="footer-col-title">Servicios</p>
+        <div class="footer-links">
+          <a href="/auditorias/">Pentesting</a><a href="/auditorias/">Auditorías técnicas</a>
+          <a href="/auditorias/">SOC & Monitorización</a><a href="/auditorias/">Consultoría normativa</a>
         </div>
       </div>
       <div>
-        <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(232,230,224,0.3); margin-bottom:0.8rem; font-weight:600;">Contacto</p>
-        <a href="mailto:contacto@ateneaciberseguridad.com" style="font-size:0.85rem;">
-          contacto@ateneaciberseguridad.com
-        </a>
+        <p class="footer-col-title">Contacto</p>
+        <div class="footer-links">
+          <a href="mailto:contacto@ateneaciberseguridad.com">contacto@ateneaciberseguridad.com</a>
+          <a href="tel:+34602068307">+34 602 068 307</a>
+        </div>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem;">
-      <p style="font-size:0.8rem; color:rgba(232,230,224,0.25);">© 2026 Atenea Ciberseguridad</p>
-      <div style="display:flex; gap:1.5rem;">
-        <a href="/aviso-legal.html" style="font-size:0.8rem;">Aviso legal</a>
-        <a href="/politica-privacidad.html" style="font-size:0.8rem;">Privacidad</a>
-        <a href="/politica-cookies.html" style="font-size:0.8rem; color:#fff !important;">Cookies</a>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Atenea Ciberseguridad</span>
+      <div class="footer-legal">
+        <a href="/aviso-legal.html">Aviso legal</a>
+        <a href="/politica-privacidad.html">Privacidad</a>
+        <a href="/politica-cookies.html" class="active">Cookies</a>
       </div>
     </div>
   </div>
 </footer>
-
-
-<!-- COOKIES -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 <script>
-window.addEventListener("load", function () {
-  if (window.cookieconsent) {
-    window.cookieconsent.initialise({
-      palette: {
-        popup: { background: "#0f0f18", text: "#b0aea8" },
-        button: { background: "#7a0019", text: "#ffffff" }
-      },
-      theme: "classic", position: "bottom", type: "opt-in",
-      content: {
-        message: "Esta web utiliza cookies para mejorar la experiencia.",
-        allow: "Aceptar", deny: "Rechazar",
-        link: "Política de cookies", href: "/politica-cookies.html"
-      }
-    });
-  }
-});
+  const btn = document.getElementById("hamburger");
+  const menu = document.getElementById("mobile-menu");
+  btn.addEventListener("click", () => menu.classList.toggle("open"));
 </script>
-
 </body>
 </html>
