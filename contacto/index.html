@@ -83,10 +83,10 @@
     textarea { resize: vertical; min-height: 120px; }
     input:focus, textarea:focus { border-color: rgba(122,0,25,0.4); box-shadow: 0 0 0 3px rgba(122,0,25,0.06); background: var(--bg-white); }
     .radio-group { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
-    .radio-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--ink-10); border-radius: 4px; cursor: pointer; transition: all 0.2s; background: var(--bg); }
+    .radio-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--ink-10); border-radius: 4px; cursor: pointer; transition: all 0.2s; background: var(--bg); user-select: none; }
     .radio-option:hover { border-color: rgba(122,0,25,0.25); background: var(--granate-light); }
-    .radio-option input[type="radio"] { width: auto; margin: 0; cursor: pointer; accent-color: var(--granate); }
-    .radio-option span { font-size: 0.875rem; color: var(--ink-60); font-weight: 300; }
+    .radio-option input[type="radio"] { width: auto; min-width: 16px; height: 16px; margin: 0; cursor: pointer; accent-color: var(--granate); pointer-events: auto; flex-shrink: 0; }
+    .radio-option span { font-size: 0.875rem; color: var(--ink-60); font-weight: 300; cursor: pointer; }
     .form-note { font-family: var(--mono); font-size: 0.68rem; color: var(--ink-30); margin-top: 6px; }
 
     /* SUBMIT BUTTON */
@@ -338,6 +338,27 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ─── NAVBAR ───────────────────────────────────────────────
+  // Construir email para evitar ofuscación de GitHub Pages
+  (function() {
+    var u = "contacto"; var d = "ateneaciberseguridad.com";
+    var el = document.getElementById("contact-email");
+    if (el) { el.href = "mailto:" + u + "@" + d; el.textContent = u + "@" + d; }
+  })();
+
+  // Resaltar radio option seleccionada
+  document.querySelectorAll('.radio-option input[type="radio"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      document.querySelectorAll('.radio-option').forEach(function(opt) {
+        opt.style.borderColor = '';
+        opt.style.background = '';
+      });
+      if (this.checked) {
+        this.closest('.radio-option').style.borderColor = 'rgba(122,0,25,0.4)';
+        this.closest('.radio-option').style.background = 'var(--granate-light)';
+      }
+    });
+  });
+
   document.getElementById("hamburger").addEventListener("click", () => {
     document.getElementById("mobile-menu").classList.toggle("open");
   });
