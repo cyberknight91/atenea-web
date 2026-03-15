@@ -1,181 +1,215 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/assets/favicon.png">
-
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAD+0lEQVR4nO2WXWhcVRSFv33OmZkwYO1/fqxKgqWhgtKIVkVRtNAnEa2mvrWiKCIFi0ikqd6MpomxaCuCT7aoUJQW/KkF81LtQysEhPhgIrSUmKZmJp001dikM5l7z/ZhJho1STOmBcGsp8s596y97t77nr1gAf93yL858ziYtSC9oGtBS+sGoAUi+XPtyuIg2CvNOacMBGBS4CefPVX3KrJB4VbQxYrkLZxR5ITFdqYZyG4A3wjRvAVMDf4qNU+CblNkXbx0VAFfyrhFyONHFb1lF5n+AFwKwnkJAGimZgPom3HMOkVRYAIfCvyqoCCL44gTIIffatEBgyReJ/PV5bhnEiAKvMySRY6K/RZqI+izyCMeHVU4YWBYUavFV9MWVuTxvR0M7d5BdVMc2VJAexz5p1oY+a0U6B/NaaaLHoAIaIzYDQoNr5Fu8PiMg/4Ivxf40WAGFPnBQ18MeWACHetgaHcA8TbSHS0MrgUa8iRWC2gww8dOK2ASEaKKnm1iybUgd4+jnznMowobQ6JNBnksDksn0GaLnH2RypVAGIAD8HDOILM2opttM8TlHZET4vUKBww85zB1ggKCRbgGe9swYYNgtiTh3QLLX2hjOP0MxARNGsxY2QJSpVolcdkCPmnQcxHmZAzqcvhIAAFVGBwhPCKQBf02gVl+Efs2kF7GyqUgxuKyUzn/jplKoICk6P8FNAJvDKgtNpwaMALnQ3w36J2CPO/RCwoYzO1FAlcHXCpyIJQpgOCPW09OKe5BxZ/WIpGJQBSpXIR7WJEvwbc5pG8C3wPkFMSg60FP/5WrDAE3lxQLfA5sbifTm8OfdohxCB797hLRiIefW8nsmcA9UYD3Y9hPS+XZ6JEjU7nKEtBYvP0khz+s6JpmKmsFuuOIejQEluXxW4HrAm6saODMqMD1EYXqgBVVwOoE4ReAlLjKE0Dx37VvMTQm8KFH3lH8exYRjx5zSG0Mc4cSfZSiP9dN9UMC460M9RSwexQ9lCJ7sZT+GTNwuatYApBRViUqCM8IpsnjMwZ2xDF3FdDIwIEI7bJQr/h9HhtT9HCcqB6y46XuL78Ek1noBdnD2UugjXHYJ/CTYj6uwBgPFwzhNkFPOsxRT3wE6FR4OkX2Yu8s3T9XARyC6CDYdoa+mUC3J7E9Dv3+POH9ApmQ2JJdDH3dT/6YEHUp7H2DTOdBsIfmMI4vKwCgEaIAXBvpvTl8UxJ7PImsH2P8vpMMDr5C1aZVJAaB/e2k2wJwc/ECUKYlm5zvzdRsTiCf5PGnBAYcck8Iz7Yy+MFcPMC8MDlotrPipp3UHN9JdddL1KyZunfVMZ03vBp+cVYEYLRoXCSYYy8tYAH/SfwOOpaj7+Di4oIAAAAASUVORK5CYII=">
   <title>Mensaje enviado · Atenea Ciberseguridad</title>
   <meta name="robots" content="noindex, nofollow">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
-
     :root {
       --granate: #7a0019;
       --granate-dark: #5c0012;
-      --granate-glow: rgba(122, 0, 25, 0.35);
+      --granate-light: #f5e6e9;
+      --ink: #111013;
+      --ink-60: rgba(17,16,19,0.6);
+      --ink-30: rgba(17,16,19,0.3);
+      --ink-10: rgba(17,16,19,0.08);
+      --bg: #f8f6f2;
+      --bg-white: #ffffff;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "IBM Plex Sans", sans-serif;
+      --mono: "IBM Plex Mono", monospace;
     }
 
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: #0a0a0f;
-      color: #e8e6e0;
-      overflow: hidden;
-      height: 100vh;
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
       position: relative;
+      overflow: hidden;
     }
 
-    h1, h2 { font-family: 'Syne', sans-serif; }
-
-    /* Noise */
+    /* Sutil patrón de fondo */
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
-
-    /* Grid decorativo */
-    .bg-grid {
+      content: "";
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(122,0,25,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(122,0,25,0.05) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+        linear-gradient(var(--ink-10) 1px, transparent 1px),
+        linear-gradient(90deg, var(--ink-10) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Glow central */
-    .bg-glow {
+    /* Glow granate muy sutil */
+    body::after {
+      content: "";
       position: fixed;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(ellipse, rgba(122,0,25,0.15) 0%, transparent 70%);
+      width: 500px; height: 400px;
+      background: radial-gradient(ellipse, rgba(122,0,25,0.06) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Card */
+    /* ─── CARD ─── */
     .card {
       position: relative;
       z-index: 10;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 3.5rem 3rem;
+      background: var(--bg-white);
+      border: 1px solid var(--ink-10);
+      border-radius: 14px;
+      padding: 52px 48px;
       text-align: center;
-      max-width: 480px;
-      width: 90%;
-      animation: fadeUp 0.6s ease forwards;
+      max-width: 460px;
+      width: 100%;
+      box-shadow: 0 8px 48px rgba(17,16,19,0.08);
+      animation: fadeUp 0.55s ease forwards;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Icono check */
+    /* ─── CHECK ICON ─── */
     .check-ring {
-      width: 72px;
-      height: 72px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
-      background: rgba(122,0,25,0.1);
-      border: 1px solid rgba(122,0,25,0.3);
+      background: var(--granate-light);
+      border: 1px solid rgba(122,0,25,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 2rem;
-      animation: scaleIn 0.5s ease 0.2s both;
+      margin: 0 auto 28px;
+      animation: scaleIn 0.45s ease 0.15s both;
     }
 
     @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.6); }
+      from { opacity: 0; transform: scale(0.5); }
       to   { opacity: 1; transform: scale(1); }
     }
 
-    .check-ring svg {
-      width: 30px;
-      height: 30px;
-      color: #e07a90;
-    }
+    .check-ring svg { color: var(--granate); }
 
-    /* Divider */
+    /* ─── DIVIDER ─── */
     .divider {
-      width: 40px;
+      width: 32px;
       height: 2px;
       background: var(--granate);
       border-radius: 2px;
-      margin: 1.5rem auto;
-      opacity: 0.6;
+      margin: 20px auto;
+      opacity: 0.5;
     }
 
-    /* Botones */
+    /* ─── TYPOGRAPHY ─── */
+    .card h1 {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .card .lead {
+      font-size: 0.9rem;
+      color: var(--ink-60);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+
+    .card .lead strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .card .sub {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-30);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .card .sub a {
+      color: var(--ink-30);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .card .sub a:hover { color: var(--granate); }
+
+    /* ─── BUTTONS ─── */
+    .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     .btn-primary {
       display: inline-block;
       background: var(--granate);
       color: #fff;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
+      font-family: var(--sans);
+      font-weight: 500;
       font-size: 0.875rem;
-      letter-spacing: 0.02em;
-      padding: 0.8rem 1.75rem;
-      border-radius: 4px;
+      padding: 11px 24px;
+      border-radius: 3px;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: background 0.2s, transform 0.15s;
     }
 
     .btn-primary:hover {
       background: var(--granate-dark);
       transform: translateY(-1px);
-      box-shadow: 0 8px 24px var(--granate-glow);
     }
 
-    .btn-secondary {
+    .btn-ghost {
       display: inline-block;
-      color: rgba(232,230,224,0.45);
+      color: var(--ink-60);
       font-size: 0.875rem;
       font-weight: 400;
-      padding: 0.8rem 1.5rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px;
+      padding: 11px 20px;
+      border: 1px solid var(--ink-10);
+      border-radius: 3px;
       text-decoration: none;
       transition: all 0.2s;
     }
 
-    .btn-secondary:hover {
-      color: #fff;
-      border-color: rgba(255,255,255,0.2);
+    .btn-ghost:hover {
+      border-color: var(--ink-30);
+      color: var(--ink);
     }
 
-    /* Logo abajo */
+    /* ─── BOTTOM BRAND ─── */
     .bottom-brand {
       position: fixed;
-      bottom: 2rem;
+      bottom: 28px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 8px;
       text-decoration: none;
       opacity: 0.35;
       transition: opacity 0.2s;
@@ -183,13 +217,11 @@
 
     .bottom-brand:hover { opacity: 0.7; }
 
-    .bottom-brand img { height: 22px; width: auto; }
-
     .bottom-brand span {
-      font-family: 'Syne', sans-serif;
+      font-family: var(--serif);
       font-size: 0.85rem;
-      font-weight: 700;
-      color: #fff;
+      font-weight: 900;
+      color: var(--ink);
       letter-spacing: -0.01em;
     }
 
@@ -197,53 +229,45 @@
       color: var(--granate);
       font-style: normal;
     }
+
+    @media (max-width: 480px) {
+      .card { padding: 36px 24px; }
+    }
   </style>
 </head>
-
 <body>
-
-  <div class="bg-grid"></div>
-  <div class="bg-glow"></div>
 
   <div class="card">
 
     <div class="check-ring">
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
       </svg>
     </div>
 
-    <h1 style="font-size:1.6rem; font-weight:800; letter-spacing:-0.02em; color:#fff; margin-bottom:0.75rem;">
-      Mensaje recibido
-    </h1>
+    <h1>Mensaje recibido</h1>
 
     <div class="divider"></div>
 
-    <p style="font-size:0.9rem; color:rgba(232,230,224,0.5); line-height:1.8; font-weight:300; margin-bottom:0.5rem;">
-      Gracias por contactar con Atenea Ciberseguridad.
-      Nuestro equipo revisará su consulta y le responderá
-      en un plazo máximo de <strong style="color:rgba(232,230,224,0.75); font-weight:500;">48 horas hábiles</strong>.
+    <p class="lead">
+      Gracias por contactar con Atenea Ciberseguridad.<br>
+      Nuestro equipo revisará su consulta y le responderá en un plazo máximo de <strong>48 horas hábiles</strong>.
     </p>
 
-    <p style="font-size:0.8rem; color:rgba(232,230,224,0.25); font-weight:300; margin-bottom:2rem;">
-      Si tiene cualquier urgencia puede contactarnos directamente en<br>
-      <a href="mailto:contacto@ateneaciberseguridad.com"
-         style="color:rgba(232,230,224,0.4); transition:color 0.2s;"
-         onmouseover="this.style.color='#fff'"
-         onmouseout="this.style.color='rgba(232,230,224,0.4)'">
-        contacto@ateneaciberseguridad.com
-      </a>
+    <p class="sub">
+      Para cualquier urgencia puede escribirnos directamente a<br>
+      <a href="mailto:contacto@ateneaciberseguridad.com">contacto@ateneaciberseguridad.com</a><br>
+      o llamarnos al <a href="tel:+34602068307">+34 602 068 307</a>
     </p>
 
-    <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+    <div class="actions">
       <a href="/" class="btn-primary">Volver al inicio</a>
-      <a href="/auditorias/" class="btn-secondary">Ver servicios</a>
+      <a href="/auditorias/" class="btn-ghost">Ver servicios</a>
     </div>
 
   </div>
 
   <a href="/" class="bottom-brand">
-    <img src="/assets/logo.png" alt="Atenea Ciberseguridad">
     <span><em>Atenea</em> Ciberseguridad</span>
   </a>
 
